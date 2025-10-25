@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>反射 | BaBaLiBoo</title>
+  <title>java-程序基础 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是反射通过实例动态获取和操作一个类的内部信息的能力 反射核心Class实例：JVM为加载的每个类&#x2F;接口都创建了一个唯一的Class对象，它储存了该类型的所有元数据（名字、方法、字段等） 访问字段通过反射可以获取、设置private类型实例的字段值，但首先要调用 setAccessible(true)  反射是一种非常规手段">
+  <meta name="description" content="Java数据类型基本数据类型 数值：byte1字节short1字节 int4字节 long8字节 浮点：float4字节double8字节 字符：char2字节，存放单个字符a 布尔：boolean1字节，true&#x2F;false，不能用0&#x2F;1代替  自动类型转换 精度小的类型自动转换为精度大的类型 多种数据混合计算：所有数据转换成容量最大的数据类型，再计算 byte和char之间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反射">
-<meta property="og:url" content="http://example.com/2025/10/25/%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:title" content="java-程序基础">
+<meta property="og:url" content="http://example.com/2025/10/24/java-%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="什么是反射通过实例动态获取和操作一个类的内部信息的能力 反射核心Class实例：JVM为加载的每个类&#x2F;接口都创建了一个唯一的Class对象，它储存了该类型的所有元数据（名字、方法、字段等） 访问字段通过反射可以获取、设置private类型实例的字段值，但首先要调用 setAccessible(true)  反射是一种非常规手段">
+<meta property="og:description" content="Java数据类型基本数据类型 数值：byte1字节short1字节 int4字节 long8字节 浮点：float4字节double8字节 字符：char2字节，存放单个字符a 布尔：boolean1字节，true&#x2F;false，不能用0&#x2F;1代替  自动类型转换 精度小的类型自动转换为精度大的类型 多种数据混合计算：所有数据转换成容量最大的数据类型，再计算 byte和char之间">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-25T03:42:47.000Z">
-<meta property="article:modified_time" content="2025-10-25T06:17:17.424Z">
+<meta property="article:published_time" content="2025-10-24T08:10:27.000Z">
+<meta property="article:modified_time" content="2025-10-25T07:16:59.681Z">
 <meta property="article:author" content="BaBaLiBoo">
-<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
@@ -67,7 +68,7 @@
 	        
 				<li><a href="/archives">归档</a></li>
 	        
-				<li><a href="/tags">标签</a></li>
+				<li><a href="/tags">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -140,7 +141,7 @@
 		        
 					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags">标签</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -155,20 +156,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-反射" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java-程序基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      反射
+      java-程序基础
     </h1>
   
 
         
-        <a href="/2025/10/25/%E5%8F%8D%E5%B0%84/" class="archive-article-date">
-  	<time datetime="2025-10-25T03:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
+        <a href="/2025/10/24/java-%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2025-10-24T08:10:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-24</time>
 </a>
         
       </header>
@@ -178,13 +179,48 @@
 
         
 
-        <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>通过实例<strong>动态</strong>获取和操作一个类的内部信息的能力</p>
-<h2 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h2><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
-<h2 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h2><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
-<ul>
-<li>反射是一种<strong>非常规手段</strong></li>
-<li></li>
+        <h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+<li>数值：<code>byte</code>1字节<code>short</code>1字节 <code>int</code>4字节 <code>long</code>8字节</li>
+<li>浮点：<code>float</code>4字节<code>double</code>8字节</li>
+<li>字符：<code>char</code>2字节，存放单个字符a</li>
+<li>布尔：<code>boolean</code>1字节，true&#x2F;false，不能用0&#x2F;1代替</li>
 </ul>
+<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><ul>
+<li>精度小的类型<strong>自动</strong>转换为精度大的类型</li>
+<li>多种数据混合计算：所有数据转换成<strong>容量最大</strong>的数据类型，再计算</li>
+<li><code>byte</code>和<code>char</code>之间不会自动转换，但可以计算，计算时转换为int类型</li>
+<li><code>boolean</code>不参与转换</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">n1 = <span class="number">10</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ❌ n1 + 1.1为double类型，赋给d1产生精度损失</span></span><br><span class="line"><span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ✔</span></span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1F</span>; <span class="comment">// ✔</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">1.1</span>;   <span class="comment">// ❌</span></span><br><span class="line"><span class="type">double</span> <span class="variable">n3</span> <span class="operator">=</span> n1; <span class="comment">// ✔ 自动转换</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b3</span> <span class="operator">=</span> b1 + b2; <span class="comment">// ❌ b1 + b2会转换成int类型，不能再赋给b3</span></span><br></pre></td></tr></table></figure>
+<h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span> b=<span class="number">10</span>;</span><br><span class="line">b=b+<span class="number">11</span>; <span class="comment">// ❌</span></span><br><span class="line">b=(<span class="type">byte</span>)(b+<span class="number">11</span>);  <span class="comment">// ✔强制转换</span></span><br></pre></td></tr></table></figure>
+<h2 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><ul>
+<li>类</li>
+<li>接口</li>
+<li>数组</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">100</span>+<span class="number">3</span>+<span class="string">&quot;hello&quot;</span>)  <span class="comment">// 输出：103hello</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Java运算符"><a href="#Java运算符" class="headerlink" title="Java运算符"></a>Java运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -10 % 3 = -1</span></span><br><span class="line"><span class="comment">// 10 % -3 = 1</span></span><br><span class="line"><span class="comment">// -10 % -3 = -1</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i++; <span class="comment">// 先赋值后自增</span></span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> ++i; <span class="comment">// 先自增后赋值</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+ k + <span class="string">&quot;j=&quot;</span> j); <span class="comment">// 10 11</span></span><br></pre></td></tr></table></figure>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
+<li>&amp;&amp;与&amp;的区别<ul>
+<li><code>&amp;&amp;</code>短路与：第一个条件不成立，不再判断第二个，效率高</li>
+<li><code>&amp;</code>逻辑与：第一个条件不成立，仍需判断第二个，效率低</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> b=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp;&amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok100&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok200&quot;</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 3</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>a^b</code> 逻辑异或：ab不同为true，相同为false</li>
+</ul>
+<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><ul>
+<li><code>条件 ? 表达式1 : 表达式2</code> ：条件真-&gt;1，条件假-&gt;2</li>
+</ul>
+<h1 id="数组使用方式"><a href="#数组使用方式" class="headerlink" title="数组使用方式"></a>数组使用方式</h1><ol>
+<li>动态初始化</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Array</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>] <span class="comment">// 创建一个大小为5个int的数组a</span></span><br><span class="line">    <span class="comment">// 循环输入</span></span><br><span class="line">    <span class="type">Scanner</span> <span class="variable">myScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">      a[i] = myScanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -199,7 +235,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
         		</li>
       		
 		</ul>
@@ -255,7 +295,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/25/%E5%8F%8D%E5%B0%84/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/24/java-%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,9 +309,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2025/10/25/java-%E5%8F%8D%E5%B0%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java-反射
+        
+      </div>
+    </a>
   
-    <a href="/2025/10/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客</div>
+  
+    <a href="/2025/10/24/java-%E8%83%8C%E6%99%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java-背景</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -389,7 +438,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaSE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
               </li>
             
             <div class="clearfix"></div>
