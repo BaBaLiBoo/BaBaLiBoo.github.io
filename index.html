@@ -201,9 +201,20 @@
 
         <h2 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h2><p>一种<strong>类型模板</strong></p>
 <p>允许写一个类但<strong>不把数据类型写死</strong>，而是用一个占位符<T>代替。</p>
-<h2 id="泛型的好处是什么？"><a href="#泛型的好处是什么？" class="headerlink" title="泛型的好处是什么？"></a>泛型的好处是什么？</h2><ul>
+<h3 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h3><ul>
 <li>类型安全。源头上杜绝了类型放错的可能</li>
 <li>方便。不用手动强转类型</li>
+</ul>
+<h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><blockquote>
+<p> Java语言的泛型实现方式是——擦拭法</p>
+</blockquote>
+<p>Java 的泛型只存在于<strong>编译期</strong>，在<strong>运行期</strong>（JVM执行时）会被全部“擦掉”，替换成 <code>Object</code> 和强制类型转换</p>
+<p>所有工作由编译器来做，虚拟机一无所知！</p>
+<h4 id="擦拭带来的局限"><a href="#擦拭带来的局限" class="headerlink" title="擦拭带来的局限"></a>擦拭带来的局限</h4><ul>
+<li>运行时，所有泛型箱子都“长得一样”。</li>
+<li>不能用 <code>instanceof</code> 检查泛型标签（<code>instanceof</code> 是在<strong>运行时</strong>检查的）</li>
+<li>不能用基本类 int, double，要用<code>Integer</code>、<code>Double</code>（Object才可以被安全擦拭）</li>
+<li>不能 <code>new T()</code></li>
 </ul>
 
       
@@ -263,19 +274,19 @@
 
 
   
-    <article id="post-3.java-反射" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-3.java-反射&amp;动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84/">3.java-反射</a>
+      <a class="article-title" href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">3.java-反射&amp;动态代理</a>
     </h1>
   
 
         
-        <a href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84/" class="archive-article-date">
+        <a href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
   	<time datetime="2025-10-25T03:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
 </a>
         
@@ -286,30 +297,63 @@
 
         
 
-        <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>一种java机制，通过实例动态地<strong>获取和操作</strong>一个类&#x2F;对象的所有内部信息的能力，甚至可无视<code>private</code>限制</p>
-<h2 id="反射的好处"><a href="#反射的好处" class="headerlink" title="反射的好处"></a>反射的好处</h2><p>极大的<strong>灵活性、通用性</strong></p>
+        <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>一种java的基础API，通过实例动态地<strong>获取和操作</strong>一个类&#x2F;对象的所有内部信息的能力，甚至可无视<code>private</code>限制</p>
+<h3 id="反射的好处"><a href="#反射的好处" class="headerlink" title="反射的好处"></a>反射的好处</h3><p>极大的<strong>灵活性、通用性</strong></p>
 <p>可以编写“通用代码”，在运行时再动态地决定加载谁、执行谁</p>
-<h2 id="反射应用场景"><a href="#反射应用场景" class="headerlink" title="反射应用场景"></a>反射应用场景</h2><ul>
+<h3 id="反射应用场景"><a href="#反射应用场景" class="headerlink" title="反射应用场景"></a>反射应用场景</h3><ul>
 <li>⭐<strong>框架：</strong> <strong>Spring</strong>、MyBatis 等框架用它来实现 <strong>IoC&#x2F;DI</strong> (依赖注入) 和 <strong>AOP</strong> (动态代理)</li>
 <li><strong>动态加载：</strong> 比如 <code>Class.forName()</code> 根据配置文件里的一个类名字符串，在运行时加载该类并创建实例（如 JDBC 驱动）。</li>
 </ul>
-<h2 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h2><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
-<h2 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h2><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
+<h3 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h3><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
+<h3 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h3><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
 <ul>
 <li>反射是一种<strong>非常规手段</strong></li>
 </ul>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><ul>
-<li><p>流程：定义一个<code>InvocationHandler</code>（处理器）来封装增强逻辑，再调用<code>Proxy.newProxyInstance()</code>（工厂）来生成一个代理对象，当这个代理对象的方法被调用时，它会自动将调用<em>拦截</em>并<em>转发</em>给处理器的<code>invoke</code>方法去执行。</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h3><ul>
+<li><p><strong>JDK 动态代理</strong>：JDK提供的动态创建接口对象的方式</p>
 </li>
-<li><p>动态代理是 AOP ( 面向切面编程 ) 的核心技术之一。AOP 允许你把“横切”多个业务的通用功能从业务代码中抽离出来，集中管理。</p>
-<h3 id="对比两种方法"><a href="#对比两种方法" class="headerlink" title="对比两种方法"></a>对比两种方法</h3></li>
-<li><p><strong>静态代理</strong>(Proxy 设计模式)</p>
+<li><p><strong>CGLIB 动态代理</strong>（第三方库，Spring 框架大量使用）</p>
+</li>
+<li><p><strong>区别</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>对比维度</strong></th>
+<th><strong>JDK 动态代理</strong></th>
+<th><strong>CGLIB 动态代理</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>实现原理</strong></td>
+<td>在运行时，动态<strong>实现</strong>目标类所实现的<strong>接口</strong>，造出一个“兄弟”类。</td>
+<td>在运行时，动态<strong>继承</strong>目标类，造出一个“儿子”类（子类）。</td>
+</tr>
+<tr>
+<td><strong>核心要求</strong></td>
+<td>目标类<strong>必须实现接口</strong>。</td>
+<td>目标类<strong>不能是 <code>final</code> 的</strong>（因为 <code>final</code> 类无法被继承）。</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>在早期版本中创建代理较快，但现代 JVM 中两者性能差异已很小。</td>
+<td>无法代理 <code>final</code> 方法（因为 <code>final</code> 方法无法被重写）。</td>
+</tr>
+</tbody></table>
+<h3 id="原理：拦截-增强"><a href="#原理：拦截-增强" class="headerlink" title="原理：拦截+增强"></a>原理：拦截+增强</h3><p>运行时系统给你的不是真实对象，而是造出的一个<strong>代理对象</strong>（中介），当你调用它的方法时，它会<strong>拦截</strong>这个调用，执行一些**“增强”**逻辑（自己定义的额外逻辑），最后再可选地调用真实对象</p>
 <ul>
+<li><strong>动态代理</strong> 是 <strong>AOP</strong> ( 面向切面编程 ) 的核心技术之一。AOP 允许你把“横切”多个业务的通用功能从业务代码中抽离出来，集中管理。</li>
+</ul>
+<h3 id="动-静态代理方法"><a href="#动-静态代理方法" class="headerlink" title="动&#x2F;静态代理方法"></a>动&#x2F;静态代理方法</h3><ul>
+<li><strong>静态代理</strong>(Proxy 设计模式)<ul>
 <li>思想：在编译期就为特定类手动创建“一对一”的代理类</li>
 <li>问题是：如果有100个服务，就必须<strong>手动编写100个</strong>对应的代理类</li>
 </ul>
 </li>
-<li><p><strong>动态代理</strong>（JDK <code>java.lang.reflect.Proxy</code>）<br>- 思想：让 JVM 在运行时帮我自动生成这些代理类</p>
+<li><strong>动态代理</strong>（JDK <code>java.lang.reflect.Proxy</code>）<ul>
+<li>思想：让 JVM 在运行时帮我自动生成这些代理类</li>
+</ul>
 </li>
 </ul>
 
@@ -340,7 +384,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/10/25/3.java-%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">展开全文 >></a>
         </p>
       
 
