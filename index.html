@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>BaBaLiBoo的个人网站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="BaBaLiBoo的个人网站">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="BaBaLiBoo的个人网站">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="BaBaLiBoo">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="BaBaLiBoo的个人网站" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -55,7 +55,9 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -113,6 +115,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -130,12 +134,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/tags">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,6 +178,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+
+        
+
         <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>通过实例<strong>动态</strong>获取和操作一个类的内部信息的能力</p>
 <h2 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h2><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
 <h2 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h2><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
@@ -181,6 +190,7 @@
 </ul>
 
       
+
 
       
     </div>
@@ -252,9 +262,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+
+        
+
         <p>记录我的cs学习之路！</p>
 
       
+
 
       
     </div>
@@ -315,6 +329,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+
+        
+
         <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
@@ -330,6 +347,7 @@
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
+
 
       
     </div>
@@ -380,7 +398,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2025 John Doe
+    		&copy; 2025 BaBaLiBoo
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -401,7 +419,7 @@
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
