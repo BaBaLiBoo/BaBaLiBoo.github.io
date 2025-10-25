@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hello World | BaBaLiBoo</title>
+  <title>java-4.泛型 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="什么是泛型一种类型模板 允许写一个类但不把数据类型写死，而是用一个占位符代替。 泛型的好处 类型安全。源头上杜绝了类型放错的可能 方便。不用手动强转类型  类型擦除  Java语言的泛型实现方式是——擦拭法  Java 的泛型只存在于编译期，在运行期（JVM执行时）会被全部“擦掉”，替换成 Object 和强制类型转换 所有工作由编译器来做，虚拟机一无所知！ 擦拭带来的局限 运行时，所有泛型箱子都">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2025/10/22/hello-world/index.html">
+<meta property="og:title" content="java-4.泛型">
+<meta property="og:url" content="http://example.com/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="什么是泛型一种类型模板 允许写一个类但不把数据类型写死，而是用一个占位符代替。 泛型的好处 类型安全。源头上杜绝了类型放错的可能 方便。不用手动强转类型  类型擦除  Java语言的泛型实现方式是——擦拭法  Java 的泛型只存在于编译期，在运行期（JVM执行时）会被全部“擦掉”，替换成 Object 和强制类型转换 所有工作由编译器来做，虚拟机一无所知！ 擦拭带来的局限 运行时，所有泛型箱子都">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-22T15:55:07.681Z">
-<meta property="article:modified_time" content="2025-10-22T15:55:07.681Z">
+<meta property="article:published_time" content="2025-10-25T08:31:42.000Z">
+<meta property="article:modified_time" content="2025-10-25T14:15:12.430Z">
 <meta property="article:author" content="BaBaLiBoo">
+<meta property="article:tag" content="JavaSE">
+<meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
@@ -178,20 +180,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-java-4.泛型" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      java-4.泛型
     </h1>
   
 
         
-        <a href="/2025/10/22/hello-world/" class="archive-article-date">
-  	<time datetime="2025-10-22T15:55:07.681Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-22</time>
+        <a href="/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2025-10-25T08:31:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
 </a>
         
       </header>
@@ -201,19 +203,23 @@
 
         
 
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h2><p>一种<strong>类型模板</strong></p>
+<p>允许写一个类但<strong>不把数据类型写死</strong>，而是用一个占位符<T>代替。</p>
+<h3 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h3><ul>
+<li>类型安全。源头上杜绝了类型放错的可能</li>
+<li>方便。不用手动强转类型</li>
+</ul>
+<h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><blockquote>
+<p> Java语言的泛型实现方式是——擦拭法</p>
+</blockquote>
+<p>Java 的泛型只存在于<strong>编译期</strong>，在<strong>运行期</strong>（JVM执行时）会被全部“擦掉”，替换成 <code>Object</code> 和强制类型转换</p>
+<p>所有工作由编译器来做，虚拟机一无所知！</p>
+<h4 id="擦拭带来的局限"><a href="#擦拭带来的局限" class="headerlink" title="擦拭带来的局限"></a>擦拭带来的局限</h4><ul>
+<li>运行时，所有泛型箱子都“长得一样”。</li>
+<li>不能用 <code>instanceof</code> 检查泛型标签（<code>instanceof</code> 是在<strong>运行时</strong>检查的）</li>
+<li>不能用基本类 int, double，要用<code>Integer</code>、<code>Double</code>（Object才可以被安全擦拭）</li>
+<li>不能 <code>new T()</code></li>
+</ul>
 
       
 
@@ -223,6 +229,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -273,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/22/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -287,15 +308,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2025/10/23/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/10/25/%E7%AE%97%E6%B3%95-1.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          我的第一篇博客
+          算法-1.二分查找
         
       </div>
     </a>
   
+  
+    <a href="/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java-3.反射&amp;动态代理</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -320,7 +346,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B3%9B%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">什么是泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.1.</span> <span class="toc-text">泛型的好处</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E6%93%A6%E9%99%A4"><span class="toc-number">2.</span> <span class="toc-text">类型擦除</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%A6%E6%8B%AD%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%B1%80%E9%99%90"><span class="toc-number">2.0.1.</span> <span class="toc-text">擦拭带来的局限</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
