@@ -1,10 +1,4 @@
----
-title: README
-date: 2025-10-25 11:43:34
-tags:
----
-
-# Hexo常见命令：
+## Hexo常见命令：
 
 ```
 hexo new "postName"      # 新建文章
