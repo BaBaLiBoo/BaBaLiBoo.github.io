@@ -58,11 +58,11 @@
 		<!-- 统计信息 -->
 		<div class="header-stats">
 			<div class="stat-item">
-				<span class="stat-number">13</span>
+				<span class="stat-number">15</span>
 				<span class="stat-label">文章</span>
 			</div>
 			<div class="stat-item">
-				<span class="stat-number">6</span>
+				<span class="stat-number">7</span>
 				<span class="stat-label">标签</span>
 			</div>
 		</div>
@@ -125,11 +125,11 @@
 			<!-- 统计信息 -->
 			<div class="header-stats">
 				<div class="stat-item">
-					<span class="stat-number">13</span>
+					<span class="stat-number">15</span>
 					<span class="stat-label">文章</span>
 				</div>
 				<div class="stat-item">
-					<span class="stat-number">6</span>
+					<span class="stat-number">7</span>
 					<span class="stat-label">标签</span>
 				</div>
 			</div>
@@ -175,6 +175,224 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-系统结构-2-指令系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">系统结构-2.指令系统</a>
+    </h1>
+  
+
+        
+        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+  	<time datetime="2025-10-27T15:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        
+
+        <h2 id="指令系统的分类"><a href="#指令系统的分类" class="headerlink" title="指令系统的分类"></a>指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
+<p>以<code>C=A+B</code>为例说明不同指令系统的特性</p>
+<ul>
+<li><strong>堆栈型</strong></li>
+</ul>
+<p>计算<strong>只能</strong>从栈顶拿数据，计算完也<strong>只能</strong>放回栈顶。</p>
+<p>代码：</p>
+<p>​	<code>Push A</code> (内存 $\to$ 堆栈)</p>
+<p>​	<code>Push B</code> (内存 $\to$ 堆栈)</p>
+<p>​	<code>Add</code> ([计算数]堆栈 $\to$ ALU $\to$ [计算结果]堆栈) </p>
+<p>​	<code>Pop C</code> (堆栈 $\to$ 内存)</p>
+<ul>
+<li><strong>累加器型</strong></li>
+</ul>
+<p>一个操作数必须来自<strong>累加器</strong>，另一个操作数必须来自<strong>内存</strong>。结果必须放回<strong>累加器</strong>。</p>
+<p>代码：</p>
+<p>​	<code>Load A</code> (内存 <code>A</code> $\to$ 累加器)</p>
+<p>​	<code>Add B</code> (累加器 + 内存 <code>B</code> $\to$ ALU $\to$ 累加器) </p>
+<p>​	<code>Store C</code> (累加器 $\to$ 内存 <code>C</code>)</p>
+<ul>
+<li><p><strong>寄存器型</strong></p>
+<ul>
+<li><strong>寄存器-内存型</strong></li>
+</ul>
+<p>累加器型的“升级版”。计算时，一个操作数来自<strong>任意</strong>寄存器，另一个可以来自内存。</p>
+<p>代码：</p>
+<p>​    <code>Load R1, A</code> (内存 <code>A</code> $\to$ 寄存器 <code>R1</code>) </p>
+<p>​    <code>Add R3, R1, B</code> (<code>R1</code> + 内存 <code>B</code> $\to$ ALU $\to$ 寄存器 <code>R3</code>) </p>
+<p>​    <code>Store R3, C</code> (寄存器 <code>R3</code> $\to$ 内存 <code>C</code>)</p>
+<ul>
+<li><strong>寄存器-寄存器型</strong></li>
+</ul>
+<p>ALU<strong>绝对不能</strong>直接访问内存。所有操作数必须先从内存 <code>Load</code>到寄存器中</p>
+<p>代码：</p>
+<p>​    <code>Load R1, A</code> (内存 <code>A</code> $\to$ 寄存器 <code>R1</code>) </p>
+<p>​    <code>Load R2, B</code> (内存 <code>B</code> $\to$ 寄存器 <code>R2</code>) </p>
+<p>​    <code>Add R3, R1, R2</code> (寄存器 <code>R1</code> + 寄存器 <code>R2</code> $\to$ ALU $\to$ 寄存器 <code>R3</code>)     <code>Store R3, C</code> (寄存器 <code>R3</code> $\to$ 内存 <code>C</code>)</p>
+</li>
+</ul>
+<h2 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h2><h2 id="寻址技术"><a href="#寻址技术" class="headerlink" title="寻址技术"></a>寻址技术</h2><h2 id="指令格式的优化设计"><a href="#指令格式的优化设计" class="headerlink" title="指令格式的优化设计"></a>指令格式的优化设计</h2><h2 id="指令系统的功能设计"><a href="#指令系统的功能设计" class="headerlink" title="指令系统的功能设计"></a>指令系统的功能设计</h2><h2 id="综合实例：-MIPS-指令集"><a href="#综合实例：-MIPS-指令集" class="headerlink" title="综合实例： MIPS 指令集"></a>综合实例： MIPS 指令集</h2>
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-系统结构-1-基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">系统结构-1.基本概念</a>
+    </h1>
+  
+
+        
+        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="archive-article-date">
+  	<time datetime="2025-10-27T14:21:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        
+
+        <h2 id="定量准则"><a href="#定量准则" class="headerlink" title="定量准则"></a>定量准则</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
+<li>系统加速比 $S_n$：</li>
+</ul>
+<p>$$<br>S_n&#x3D;\frac{T_0}{T_n}&#x3D;\frac{1}{(1-F_e)+\frac{F_e}{S_e}}<br>$$</p>
+<p>改进前整个任务执行时间&#x2F;改进后整个任务执行时间</p>
+<p>$F_e$：可改进比例</p>
+<p>$S_e$：部件加速比</p>
+<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p>假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的10倍和改进FP指令速度为原来的2倍，哪种方案更好？</p>
+<p>①<br>$$<br>S_n&#x3D;\frac{1}{(1-0.2)+\frac{0.2}{10}}&#x3D;1.22<br>$$<br>②<br>$$<br>S_n&#x3D;\frac{1}{(1-0.5)+\frac{0.5}{2}}&#x3D;1.33<br>$$<br>∴ 方案2 优于方案1</p>
+<h2 id="CPU性能公式"><a href="#CPU性能公式" class="headerlink" title="CPU性能公式"></a>CPU性能公式</h2><p><strong>CPU时间</strong>&#x3D; IC × CPI × 时钟周期长度</p>
+<ul>
+<li>IC：指令总数</li>
+<li>CPI：1条指令所需平均时钟周期数</li>
+</ul>
+<h2 id="系统结构的发展"><a href="#系统结构的发展" class="headerlink" title="系统结构的发展"></a>系统结构的发展</h2><h4 id="冯诺依曼结构"><a href="#冯诺依曼结构" class="headerlink" title="冯诺依曼结构"></a>冯诺依曼结构</h4><p><img src="/../typora-user-images/image-20251027231623387.png" alt="image-20251027231623387"></p>
+<h4 id="目前的改进"><a href="#目前的改进" class="headerlink" title="目前的改进"></a>目前的改进</h4><ol>
+<li><p>以主存为中心，操作并行</p>
+</li>
+<li><p>指令执行由数据驱动，指令&amp;数据分开存储</p>
+</li>
+<li><p>采用按内容访问的相联存</p>
+</li>
+<li><p>…</p>
+</li>
+</ol>
+
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-操作系统-虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -909,269 +1127,6 @@
 
 
   
-    <article id="post-java-3.反射&amp;动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">java-3.反射&amp;动态代理</a>
-    </h1>
-  
-
-        
-        <a href="/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  	<time datetime="2025-10-25T03:42:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        
-
-        <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>一种java的基础API，通过实例动态地<strong>获取和操作</strong>一个类&#x2F;对象的所有内部信息的能力，甚至可无视<code>private</code>限制</p>
-<h3 id="反射的好处"><a href="#反射的好处" class="headerlink" title="反射的好处"></a>反射的好处</h3><p>极大的<strong>灵活性、通用性</strong></p>
-<p>可以编写“通用代码”，在运行时再动态地决定加载谁、执行谁</p>
-<h3 id="反射应用场景"><a href="#反射应用场景" class="headerlink" title="反射应用场景"></a>反射应用场景</h3><ul>
-<li>⭐<strong>框架：</strong> <strong>Spring</strong>、MyBatis 等框架用它来实现 <strong>IoC&#x2F;DI</strong> (依赖注入) 和 <strong>AOP</strong> (动态代理)</li>
-<li><strong>动态加载：</strong> 比如 <code>Class.forName()</code> 根据配置文件里的一个类名字符串，在运行时加载该类并创建实例（如 JDBC 驱动）。</li>
-</ul>
-<h3 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h3><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
-<h3 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h3><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
-<ul>
-<li>反射是一种<strong>非常规手段</strong></li>
-</ul>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h3><ul>
-<li><p><strong>JDK 动态代理</strong>：JDK提供的动态创建接口对象的方式</p>
-</li>
-<li><p><strong>CGLIB 动态代理</strong>（第三方库，Spring 框架大量使用）</p>
-</li>
-<li><p><strong>区别</strong></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>对比维度</strong></th>
-<th><strong>JDK 动态代理</strong></th>
-<th><strong>CGLIB 动态代理</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>实现原理</strong></td>
-<td>在运行时，动态<strong>实现</strong>目标类所实现的<strong>接口</strong>，造出一个“兄弟”类。</td>
-<td>在运行时，动态<strong>继承</strong>目标类，造出一个“儿子”类（子类）。</td>
-</tr>
-<tr>
-<td><strong>核心要求</strong></td>
-<td>目标类<strong>必须实现接口</strong>。</td>
-<td>目标类<strong>不能是 <code>final</code> 的</strong>（因为 <code>final</code> 类无法被继承）。</td>
-</tr>
-<tr>
-<td><strong>性能</strong></td>
-<td>在早期版本中创建代理较快，但现代 JVM 中两者性能差异已很小。</td>
-<td>无法代理 <code>final</code> 方法（因为 <code>final</code> 方法无法被重写）。</td>
-</tr>
-</tbody></table>
-<h3 id="原理：拦截-增强"><a href="#原理：拦截-增强" class="headerlink" title="原理：拦截+增强"></a>原理：拦截+增强</h3><p>运行时系统给你的不是真实对象，而是造出的一个<strong>代理对象</strong>（中介），当你调用它的方法时，它会<strong>拦截</strong>这个调用，执行一些**“增强”**逻辑（自己定义的额外逻辑），最后再可选地调用真实对象</p>
-<ul>
-<li><strong>动态代理</strong> 是 <strong>AOP</strong> ( 面向切面编程 ) 的核心技术之一。AOP 允许你把“横切”多个业务的通用功能从业务代码中抽离出来，集中管理。</li>
-</ul>
-<h3 id="动-静态代理方法"><a href="#动-静态代理方法" class="headerlink" title="动&#x2F;静态代理方法"></a>动&#x2F;静态代理方法</h3><ul>
-<li><strong>静态代理</strong>(Proxy 设计模式)<ul>
-<li>思想：在编译期就为特定类手动创建“一对一”的代理类</li>
-<li>问题是：如果有100个服务，就必须<strong>手动编写100个</strong>对应的代理类</li>
-</ul>
-</li>
-<li><strong>动态代理</strong>（JDK <code>java.lang.reflect.Proxy</code>）<ul>
-<li>思想：让 JVM 在运行时帮我自动生成这些代理类</li>
-</ul>
-</li>
-</ul>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java-2.程序基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2025/10/24/java-2.%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/">java-2.程序基础</a>
-    </h1>
-  
-
-        
-        <a href="/2025/10/24/java-2.%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2025-10-24T08:10:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        
-
-        <h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
-<li>数值：<code>byte</code>1字节<code>short</code>1字节 <code>int</code>4字节 <code>long</code>8字节</li>
-<li>浮点：<code>float</code>4字节<code>double</code>8字节</li>
-<li>字符：<code>char</code>2字节，存放单个字符a</li>
-<li>布尔：<code>boolean</code>1字节，true&#x2F;false，不能用0&#x2F;1代替</li>
-</ul>
-<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><ul>
-<li>精度小的类型<strong>自动</strong>转换为精度大的类型</li>
-<li>多种数据混合计算：所有数据转换成<strong>容量最大</strong>的数据类型，再计算</li>
-<li><code>byte</code>和<code>char</code>之间不会自动转换，但可以计算，计算时转换为int类型</li>
-<li><code>boolean</code>不参与转换</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">n1 = <span class="number">10</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ❌ n1 + 1.1为double类型，赋给d1产生精度损失</span></span><br><span class="line"><span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ✔</span></span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1F</span>; <span class="comment">// ✔</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">1.1</span>;   <span class="comment">// ❌</span></span><br><span class="line"><span class="type">double</span> <span class="variable">n3</span> <span class="operator">=</span> n1; <span class="comment">// ✔ 自动转换</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b3</span> <span class="operator">=</span> b1 + b2; <span class="comment">// ❌ b1 + b2会转换成int类型，不能再赋给b3</span></span><br></pre></td></tr></table></figure>
-<h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span> b=<span class="number">10</span>;</span><br><span class="line">b=b+<span class="number">11</span>; <span class="comment">// ❌</span></span><br><span class="line">b=(<span class="type">byte</span>)(b+<span class="number">11</span>);  <span class="comment">// ✔强制转换</span></span><br></pre></td></tr></table></figure>
-<h2 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><ul>
-<li>类</li>
-<li>接口</li>
-<li>数组</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">100</span>+<span class="number">3</span>+<span class="string">&quot;hello&quot;</span>)  <span class="comment">// 输出：103hello</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Java运算符"><a href="#Java运算符" class="headerlink" title="Java运算符"></a>Java运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -10 % 3 = -1</span></span><br><span class="line"><span class="comment">// 10 % -3 = 1</span></span><br><span class="line"><span class="comment">// -10 % -3 = -1</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i++; <span class="comment">// 先赋值后自增</span></span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> ++i; <span class="comment">// 先自增后赋值</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+ k + <span class="string">&quot;j=&quot;</span> j); <span class="comment">// 10 11</span></span><br></pre></td></tr></table></figure>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
-<li>&amp;&amp;与&amp;的区别<ul>
-<li><code>&amp;&amp;</code>短路与：第一个条件不成立，不再判断第二个，效率高</li>
-<li><code>&amp;</code>逻辑与：第一个条件不成立，仍需判断第二个，效率低</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> b=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp;&amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok100&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok200&quot;</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 3</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>a^b</code> 逻辑异或：ab不同为true，相同为false</li>
-</ul>
-<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><ul>
-<li><code>条件 ? 表达式1 : 表达式2</code> ：条件真-&gt;1，条件假-&gt;2</li>
-</ul>
-<h1 id="数组使用方式"><a href="#数组使用方式" class="headerlink" title="数组使用方式"></a>数组使用方式</h1><ol>
-<li>动态初始化</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Array</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>] <span class="comment">// 创建一个大小为5个int的数组a</span></span><br><span class="line">    <span class="comment">// 循环输入</span></span><br><span class="line">    <span class="type">Scanner</span> <span class="variable">myScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">      a[i] = myScanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2025/10/24/java-2.%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1278,6 +1233,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">系统结构</a>
               </li>
              
               <li class="article-tag-list-item">

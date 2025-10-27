@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>操作系统-虚拟机 | BaBaLiBoo</title>
+  <title>系统结构-1.基本概念 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统-虚拟机">
-<meta property="og:url" content="http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+  <meta name="description" content="定量准则Amdahl定律 系统加速比 $S_n$：  $$S_n&#x3D;\frac{T_0}{T_n}&#x3D;\frac{1}{(1-F_e)+\frac{F_e}{S_e}}$$ 改进前整个任务执行时间&#x2F;改进后整个任务执行时间 $F_e$：可改进比例 $S_e$：部件加速比 例题：假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统结构-1.基本概念">
+<meta property="og:url" content="http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
+<meta property="og:description" content="定量准则Amdahl定律 系统加速比 $S_n$：  $$S_n&#x3D;\frac{T_0}{T_n}&#x3D;\frac{1}{(1-F_e)+\frac{F_e}{S_e}}$$ 改进前整个任务执行时间&#x2F;改进后整个任务执行时间 $F_e$：可改进比例 $S_e$：部件加速比 例题：假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-10-27T03:21:31.000Z">
-<meta property="article:modified_time" content="2025-10-27T03:34:59.819Z">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251027231623387.png">
+<meta property="article:published_time" content="2025-10-27T14:21:55.000Z">
+<meta property="article:modified_time" content="2025-10-27T15:27:35.888Z">
 <meta property="article:author" content="BaBaLiBoo">
-<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="系统结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251027231623387.png">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
@@ -177,20 +181,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统-虚拟机" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-系统结构-1-基本概念" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统-虚拟机
+      系统结构-1.基本概念
     </h1>
   
 
         
-        <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2025-10-27T03:21:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
+        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="archive-article-date">
+  	<time datetime="2025-10-27T14:21:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
 </a>
         
       </header>
@@ -200,7 +204,32 @@
 
         
 
-        
+        <h2 id="定量准则"><a href="#定量准则" class="headerlink" title="定量准则"></a>定量准则</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
+<li>系统加速比 $S_n$：</li>
+</ul>
+<p>$$<br>S_n&#x3D;\frac{T_0}{T_n}&#x3D;\frac{1}{(1-F_e)+\frac{F_e}{S_e}}<br>$$</p>
+<p>改进前整个任务执行时间&#x2F;改进后整个任务执行时间</p>
+<p>$F_e$：可改进比例</p>
+<p>$S_e$：部件加速比</p>
+<h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p>假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的10倍和改进FP指令速度为原来的2倍，哪种方案更好？</p>
+<p>①<br>$$<br>S_n&#x3D;\frac{1}{(1-0.2)+\frac{0.2}{10}}&#x3D;1.22<br>$$<br>②<br>$$<br>S_n&#x3D;\frac{1}{(1-0.5)+\frac{0.5}{2}}&#x3D;1.33<br>$$<br>∴ 方案2 优于方案1</p>
+<h2 id="CPU性能公式"><a href="#CPU性能公式" class="headerlink" title="CPU性能公式"></a>CPU性能公式</h2><p><strong>CPU时间</strong>&#x3D; IC × CPI × 时钟周期长度</p>
+<ul>
+<li>IC：指令总数</li>
+<li>CPI：1条指令所需平均时钟周期数</li>
+</ul>
+<h2 id="系统结构的发展"><a href="#系统结构的发展" class="headerlink" title="系统结构的发展"></a>系统结构的发展</h2><h4 id="冯诺依曼结构"><a href="#冯诺依曼结构" class="headerlink" title="冯诺依曼结构"></a>冯诺依曼结构</h4><p><img src="/../typora-user-images/image-20251027231623387.png" alt="image-20251027231623387"></p>
+<h4 id="目前的改进"><a href="#目前的改进" class="headerlink" title="目前的改进"></a>目前的改进</h4><ol>
+<li><p>以主存为中心，操作并行</p>
+</li>
+<li><p>指令执行由数据驱动，指令&amp;数据分开存储</p>
+</li>
+<li><p>采用按内容访问的相联存</p>
+</li>
+<li><p>…</p>
+</li>
+</ol>
+
       
 
 
@@ -214,7 +243,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统结构</a>
         		</li>
       		
 		</ul>
@@ -270,7 +299,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E6%9C%BA/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -284,18 +313,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          系统结构-1.基本概念
+          系统结构-2.指令系统
         
       </div>
     </a>
   
   
-    <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-OS%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">操作系统-OS体系结构</div>
+    <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%99%9A%E6%8B%9F%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统-虚拟机</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -322,7 +351,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E9%87%8F%E5%87%86%E5%88%99"><span class="toc-number">1.</span> <span class="toc-text">定量准则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Amdahl%E5%AE%9A%E5%BE%8B"><span class="toc-number">1.1.</span> <span class="toc-text">Amdahl定律</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">例题：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E6%80%A7%E8%83%BD%E5%85%AC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">CPU性能公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E7%9A%84%E5%8F%91%E5%B1%95"><span class="toc-number">3.</span> <span class="toc-text">系统结构的发展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84"><span class="toc-number">3.0.1.</span> <span class="toc-text">冯诺依曼结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="toc-number">3.0.2.</span> <span class="toc-text">目前的改进</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
