@@ -58,7 +58,7 @@
 		<!-- 统计信息 -->
 		<div class="header-stats">
 			<div class="stat-item">
-				<span class="stat-number">15</span>
+				<span class="stat-number">16</span>
 				<span class="stat-label">文章</span>
 			</div>
 			<div class="stat-item">
@@ -125,7 +125,7 @@
 			<!-- 统计信息 -->
 			<div class="header-stats">
 				<div class="stat-item">
-					<span class="stat-number">15</span>
+					<span class="stat-number">16</span>
 					<span class="stat-label">文章</span>
 				</div>
 				<div class="stat-item">
@@ -175,6 +175,104 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-java-4.泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/">java-4.泛型</a>
+    </h1>
+  
+
+        
+        <a href="/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2025-10-25T08:31:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        
+
+        <h2 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h2><p>一种<strong>类型模板</strong></p>
+<p>允许写一个类但<strong>不把数据类型写死</strong>，而是用一个占位符<T>代替。</p>
+<h3 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h3><ul>
+<li>类型安全。源头上杜绝了类型放错的可能</li>
+<li>方便。不用手动强转类型</li>
+</ul>
+<h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><blockquote>
+<p> Java语言的泛型实现方式是——擦拭法</p>
+</blockquote>
+<p>Java 的泛型只存在于<strong>编译期</strong>，在<strong>运行期</strong>（JVM执行时）会被全部“擦掉”，替换成 <code>Object</code> 和强制类型转换</p>
+<p>所有工作由编译器来做，虚拟机一无所知！</p>
+<h4 id="擦拭带来的局限"><a href="#擦拭带来的局限" class="headerlink" title="擦拭带来的局限"></a>擦拭带来的局限</h4><ul>
+<li>运行时，所有泛型箱子都“长得一样”。</li>
+<li>不能用 <code>instanceof</code> 检查泛型标签（<code>instanceof</code> 是在<strong>运行时</strong>检查的）</li>
+<li>不能用基本类 int, double，要用<code>Integer</code>、<code>Double</code>（Object才可以被安全擦拭）</li>
+<li>不能 <code>new T()</code></li>
+</ul>
+
+      
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-java-3.反射&amp;动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
