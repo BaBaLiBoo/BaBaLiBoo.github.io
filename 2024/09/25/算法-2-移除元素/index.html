@@ -6,23 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>算法-4.长度最小的子数组 | BaBaLiBoo</title>
+  <title>算法-2.移除元素 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="leetcode 209 209.长度最小的子数组给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。 示例：  输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。  提示：  1 &lt;&amp;">
+  <meta name="description" content="leetcode 27 移除元素 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。 假设 nums 中不等于 val 的元素数量为 k，要通过此题，您需要执行以下操作：  更改 nums 数组，使 nums 的前 k 个元素包含不等于 val 的元素。nums 的其余元素和 num">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法-4.长度最小的子数组">
-<meta property="og:url" content="http://example.com/2025/10/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="算法-2.移除元素">
+<meta property="og:url" content="http://example.com/2024/09/25/%E7%AE%97%E6%B3%95-2-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="leetcode 209 209.长度最小的子数组给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。 示例：  输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。  提示：  1 &lt;&amp;">
+<meta property="og:description" content="leetcode 27 移除元素 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素。元素的顺序可能发生改变。然后返回 nums 中与 val 不同的元素的数量。 假设 nums 中不等于 val 的元素数量为 k，要通过此题，您需要执行以下操作：  更改 nums 数组，使 nums 的前 k 个元素包含不等于 val 的元素。nums 的其余元素和 num">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251029021924086.png">
-<meta property="article:published_time" content="2025-10-28T18:11:23.000Z">
-<meta property="article:modified_time" content="2025-10-28T18:19:53.485Z">
+<meta property="article:published_time" content="2024-09-25T15:24:14.000Z">
+<meta property="article:modified_time" content="2025-10-31T12:10:17.500Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="数组">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251029021924086.png">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
@@ -182,20 +180,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-算法-4-长度最小的子数组" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-算法-2-移除元素" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      算法-4.长度最小的子数组
+      算法-2.移除元素
     </h1>
   
 
         
-        <a href="/2025/10/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2025-10-28T18:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-29</time>
+        <a href="/2024/09/25/%E7%AE%97%E6%B3%95-2-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="archive-article-date">
+  	<time datetime="2024-09-25T15:24:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-25</time>
 </a>
         
       </header>
@@ -205,22 +203,21 @@
 
         
 
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">leetcode 209</a></p>
-<h1 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h1><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
-<p>示例：</p>
+        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/">leetcode 27 移除元素</a></p>
+<p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素。元素的顺序可能发生改变。然后返回 <code>nums</code> 中与 <code>val</code> 不同的元素的数量。</p>
+<p>假设 <code>nums</code> 中不等于 <code>val</code> 的元素数量为 <code>k</code>，要通过此题，您需要执行以下操作：</p>
 <ul>
-<li>输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]</li>
-<li>输出：2</li>
-<li>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</li>
+<li>更改 <code>nums</code> 数组，使 <code>nums</code> 的前 <code>k</code> 个元素包含不等于 <code>val</code> 的元素。<code>nums</code> 的其余元素和 <code>nums</code> 的大小并不重要。</li>
+<li>返回 <code>k</code>。</li>
 </ul>
-<p>提示：</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="快慢指针法"><a href="#快慢指针法" class="headerlink" title="快慢指针法"></a>快慢指针法</h2><p>设置<code>slow</code>, <code>fast</code>两个指针，初始均为0</p>
 <ul>
-<li>1 &lt;&#x3D; target &lt;&#x3D; 10^9</li>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
-<li>1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
+<li><code>fast</code>用于遍历数组</li>
+<li><code>slow</code>用于记录当前保留的元素</li>
 </ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="💡滑动窗口"><a href="#💡滑动窗口" class="headerlink" title="💡滑动窗口"></a>💡滑动窗口</h2><p><img src="/../typora-user-images/image-20251029021924086.png" alt="image-20251029021924086"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">// 滑动窗口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            sum += nums[j];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) &#123;</span><br><span class="line">                result = Math.min(result, j - i + <span class="number">1</span>);</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无效元素：<code>fast</code>后移，<code>slow</code>不移；</p>
+<p>有效元素：放入<code>slow</code>指针位置，<code>fast</code>、<code>slow</code>均后移</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> slow=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fast=<span class="number">0</span>;fast&lt;nums.length;++fast)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fast]!=val)&#123;</span><br><span class="line">                nums[slow]=nums[fast];</span><br><span class="line">                ++slow;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>时间复杂度：O(n)</li>
@@ -300,7 +297,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/09/25/%E7%AE%97%E6%B3%95-2-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -314,18 +311,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2025/10/29/java-5-%E9%9B%86%E5%90%88/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/09/26/%E7%AE%97%E6%B3%95-3-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          java-5.集合
+          算法-3.有序数组的平方
         
       </div>
     </a>
   
   
-    <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">系统结构-2.指令系统</div>
+    <a href="/2024/09/25/%E7%AE%97%E6%B3%95-1.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法-1.二分查找</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -352,7 +349,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#209-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">209.长度最小的子数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">2.1.</span> <span class="toc-text">💡滑动窗口</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">快慢指针法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
