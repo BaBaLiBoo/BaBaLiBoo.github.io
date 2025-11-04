@@ -175,11 +175,16 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+
+
+  
   
     <article id="post-java-2.程序基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -196,52 +201,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+          
+          <h1 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h1><h2 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
 <li>数值：<code>byte</code>1字节<code>short</code>1字节 <code>int</code>4字节 <code>long</code>8字节</li>
 <li>浮点：<code>float</code>4字节<code>double</code>8字节</li>
 <li>字符：<code>char</code>2字节，存放单个字符a</li>
 <li>布尔：<code>boolean</code>1字节，true&#x2F;false，不能用0&#x2F;1代替</li>
 </ul>
-<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3><ul>
-<li>精度小的类型<strong>自动</strong>转换为精度大的类型</li>
-<li>多种数据混合计算：所有数据转换成<strong>容量最大</strong>的数据类型，再计算</li>
-<li><code>byte</code>和<code>char</code>之间不会自动转换，但可以计算，计算时转换为int类型</li>
-<li><code>boolean</code>不参与转换</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">n1 = <span class="number">10</span>;</span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ❌ n1 + 1.1为double类型，赋给d1产生精度损失</span></span><br><span class="line"><span class="type">double</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1</span>; <span class="comment">// ✔</span></span><br><span class="line"><span class="type">float</span> <span class="variable">d1</span> <span class="operator">=</span> n1 + <span class="number">1.1F</span>; <span class="comment">// ✔</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="variable">n2</span> <span class="operator">=</span> <span class="number">1.1</span>;   <span class="comment">// ❌</span></span><br><span class="line"><span class="type">double</span> <span class="variable">n3</span> <span class="operator">=</span> n1; <span class="comment">// ✔ 自动转换</span></span><br><span class="line"></span><br><span class="line"><span class="type">byte</span> <span class="variable">b1</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b2</span> <span class="operator">=</span> <span class="number">2</span>;</span><br><span class="line"><span class="type">byte</span> <span class="variable">b3</span> <span class="operator">=</span> b1 + b2; <span class="comment">// ❌ b1 + b2会转换成int类型，不能再赋给b3</span></span><br></pre></td></tr></table></figure>
-<h3 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">byte</span> b=<span class="number">10</span>;</span><br><span class="line">b=b+<span class="number">11</span>; <span class="comment">// ❌</span></span><br><span class="line">b=(<span class="type">byte</span>)(b+<span class="number">11</span>);  <span class="comment">// ✔强制转换</span></span><br></pre></td></tr></table></figure>
-<h2 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h2><ul>
-<li>类</li>
-<li>接口</li>
-<li>数组</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="number">100</span>+<span class="number">3</span>+<span class="string">&quot;hello&quot;</span>)  <span class="comment">// 输出：103hello</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Java运算符"><a href="#Java运算符" class="headerlink" title="Java运算符"></a>Java运算符</h1><h2 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// -10 % 3 = -1</span></span><br><span class="line"><span class="comment">// 10 % -3 = 1</span></span><br><span class="line"><span class="comment">// -10 % -3 = -1</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"><span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> i++; <span class="comment">// 先赋值后自增</span></span><br><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> ++i; <span class="comment">// 先自增后赋值</span></span><br><span class="line">System.out.println(<span class="string">&quot;k=&quot;</span>+ k + <span class="string">&quot;j=&quot;</span> j); <span class="comment">// 10 11</span></span><br></pre></td></tr></table></figure>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><ul>
-<li>&amp;&amp;与&amp;的区别<ul>
-<li><code>&amp;&amp;</code>短路与：第一个条件不成立，不再判断第二个，效率高</li>
-<li><code>&amp;</code>逻辑与：第一个条件不成立，仍需判断第二个，效率低</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> b=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp;&amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok100&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(a&lt;<span class="number">1</span> &amp; ++b&lt;<span class="number">100</span>)</span><br><span class="line">  System.out.println(<span class="string">&quot;ok200&quot;</span>); </span><br><span class="line">System.out.println(<span class="string">&quot;a=&quot;</span>+ a + <span class="string">&quot;b=&quot;</span>+ b); <span class="comment">// 1 3</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>a^b</code> 逻辑异或：ab不同为true，相同为false</li>
-</ul>
-<h2 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h2><ul>
-<li><code>条件 ? 表达式1 : 表达式2</code> ：条件真-&gt;1，条件假-&gt;2</li>
-</ul>
-<h1 id="数组使用方式"><a href="#数组使用方式" class="headerlink" title="数组使用方式"></a>数组使用方式</h1><ol>
-<li>动态初始化</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Array</span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">    <span class="type">int</span>[] a = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>] <span class="comment">// 创建一个大小为5个int的数组a</span></span><br><span class="line">    <span class="comment">// 循环输入</span></span><br><span class="line">    <span class="type">Scanner</span> <span class="variable">myScanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; a.length; i++)&#123;</span><br><span class="line">      a[i] = myScanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h3>
+          
+            <a class="article-more-a" href="/2025/10/24/java-2.%E7%A8%8B%E5%BA%8F%E5%9F%BA%E7%A1%80/#more">more >></a>
+          
+        
       
 
 
@@ -298,11 +270,14 @@
 
 
 
+
+
   
     <article id="post-java-1.背景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -319,10 +294,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="The-background-of-JAVA"><a href="#The-background-of-JAVA" class="headerlink" title="The background of JAVA"></a>The background of JAVA</h1><blockquote>
+          
+          <h1 id="The-background-of-JAVA"><a href="#The-background-of-JAVA" class="headerlink" title="The background of JAVA"></a>The background of JAVA</h1><blockquote>
 <p>我亦无他，唯手熟尔</p>
 </blockquote>
 <h2 id="Java诞生"><a href="#Java诞生" class="headerlink" title="Java诞生"></a>Java诞生</h2><ul>
@@ -330,59 +304,10 @@
 <li>目前属于甲骨文公司</li>
 <li>企业主要使用8、11版本</li>
 </ul>
-<h2 id="Java特性"><a href="#Java特性" class="headerlink" title="Java特性"></a>Java特性</h2><ul>
-<li><p>面向对象</p>
-</li>
-<li><p>健壮的</p>
-<blockquote>
-<p>强类型机制、异常处理、垃圾的自动收集</p>
-</blockquote>
-</li>
-<li><p>跨平台</p>
-<blockquote>
-<p>编译的.class文件可以在win&#x2F;linux多个系统上运行</p>
-</blockquote>
-</li>
-<li><p>解释性语言</p>
-<blockquote>
-<p>需要解释器；编译性语言（如C）可直接执行</p>
-</blockquote>
-</li>
-<li><p>若要输出中文 -&gt; 将属性-字符编码设为GDK</p>
-</li>
-<li><p>严格区分大小写</p>
-</li>
-<li><p>一个源文件至多一个public类，其他类个数不限制；每一个类都对应一个.class</p>
-</li>
-<li><p><strong>源文件public类和文件名必须匹配</strong></p>
-</li>
-</ul>
-<h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><ul>
-<li><code>\n</code>  换行符</li>
-<li><code>\\</code>  输出<code>\</code></li>
-<li><code>\&quot;</code> 输出<code>&quot;</code></li>
-<li><code>\\\\</code> 输出 <code>\\</code></li>
-<li><code>\r</code> 相当于回车</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;北京\t上海\t广州\nA\tB\tC&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ul>
-<li>单行注释</li>
-<li>多行注释</li>
-<li>文档注释：注释内容可以被JDK提供工具javadoc解析，生成说明文档</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*<span class="doctag">@author</span> 巴巴利波</span></span><br><span class="line"><span class="comment">*<span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// Tab：整体右移</span></span><br><span class="line"><span class="comment">// Shift+Tab：整体左移</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Dos命令"><a href="#Dos命令" class="headerlink" title="Dos命令"></a>Dos命令</h2><ul>
-<li><code>dir xxx(绝对路径)</code>查看当前目录有什么内容</li>
-<li><code>cd ..</code>返回上一级</li>
-<li><code>cd /D c:</code>从D盘切换回C盘</li>
-<li><code>cd \</code>返回根目录</li>
-<li><code>tree xxx(绝对路径)</code> 查看子级目录</li>
-<li><code>cls</code>清屏（谐音：苍老师）</li>
-<li><code>exit</code> 退出</li>
-</ul>
-
+          
+            <a class="article-more-a" href="/2025/10/24/java-1.%E8%83%8C%E6%99%AF/#more">more >></a>
+          
+        
       
 
 
@@ -439,11 +364,14 @@
 
 
 
+
+
   
     <article id="post-算法-5-区间和" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -460,22 +388,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1070">kamacoder 58</a></p>
+          
+          <p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1070">kamacoder 58</a></p>
 <h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>给定一个整数数组 Array，请计算该数组在每个指定区间内元素的总和。</p>
-<h6 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h6><p>第一行输入为整数数组 Array 的长度 n，接下来 n 行，每行一个整数，表示数组的元素。随后的输入为需要计算总和的区间下标：a，b （b &gt; &#x3D; a），直至文件结束。</p>
-<h6 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h6><p>输出每个指定区间内元素的总和。</p>
-<h6 id="输入示例"><a href="#输入示例" class="headerlink" title="输入示例"></a>输入示例</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">0 1</span><br><span class="line">1 3</span><br></pre></td></tr></table></figure>
-
-<h6 id="输出示例"><a href="#输出示例" class="headerlink" title="输出示例"></a>输出示例</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">9</span><br></pre></td></tr></table></figure>
-
-<h6 id="提示信息"><a href="#提示信息" class="headerlink" title="提示信息"></a>提示信息</h6><p>数据范围：<br>0 &lt; n &lt;&#x3D; 100000</p>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h2><p><img src="/../typora-user-images/image-20251030135751116.png" alt="image-20251030135751116"></p>
-<p>为降低时间复杂度，在读入数组时直接保存<strong>前缀和</strong>，获得区间a、b后直接输出<code>vec[b]-vec[a-1]</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[] vec = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">int</span>[] p = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">presum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            vec[i] = scanner.nextInt();</span><br><span class="line">            presum += vec[i];</span><br><span class="line">            p[i] = presum;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextInt()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> sum;</span><br><span class="line">            <span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">                sum = p[b];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = p[b] - p[a - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sum);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h6 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h6>
+          
+            <a class="article-more-a" href="/2024/09/30/%E7%AE%97%E6%B3%95-5-%E5%8C%BA%E9%97%B4%E5%92%8C/#more">more >></a>
+          
+        
       
 
 
@@ -532,11 +453,14 @@
 
 
 
+
+
   
     <article id="post-算法-4-长度最小的子数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -553,10 +477,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">leetcode 209</a></p>
+          
+          <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">leetcode 209</a></p>
 <h1 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h1><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
 <p>示例：</p>
 <ul>
@@ -565,19 +488,10 @@
 <li>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</li>
 </ul>
 <p>提示：</p>
-<ul>
-<li>1 &lt;&#x3D; target &lt;&#x3D; 10^9</li>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
-<li>1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
-</ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="💡滑动窗口"><a href="#💡滑动窗口" class="headerlink" title="💡滑动窗口"></a>💡滑动窗口</h2><p><img src="/../typora-user-images/image-20251029021924086.png" alt="image-20251029021924086"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">// 滑动窗口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            sum += nums[j];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) &#123;</span><br><span class="line">                result = Math.min(result, j - i + <span class="number">1</span>);</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>时间复杂度：O(n)</li>
-<li>空间复杂度：O(1)</li>
-</ul>
-
+          
+            <a class="article-more-a" href="/2024/09/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/#more">more >></a>
+          
+        
       
 
 
@@ -634,11 +548,14 @@
 
 
 
+
+
   
     <article id="post-算法-3-有序数组的平方" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -655,10 +572,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/">leetcode 977 有序数组的平方</a></p>
+          
+          <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/squares-of-a-sorted-array/">leetcode 977 有序数组的平方</a></p>
 <p>给你一个按 非递减顺序 排序的整数数组 nums，返回 每个数字的平方 组成的新数组，要求也按 非递减顺序 排序。</p>
 <p>示例 1：</p>
 <ul>
@@ -666,17 +582,10 @@
 <li>输出：[0,1,9,16,100]</li>
 <li>解释：平方后，数组变为 [16,1,0,9,100]，排序后，数组变为 [0,1,9,16,100]</li>
 </ul>
-<p>示例 2：</p>
-<ul>
-<li>输入：nums &#x3D; [-7,-3,2,3,11]</li>
-<li>输出：[4,9,9,49,121]</li>
-</ul>
-<h1 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h1><h2 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h2><p>最终结果从大到小对应 从两侧向中间，即<strong>最大值一定在数组左右两端</strong></p>
-<p>放两个指针<code>i</code>,<code>j</code>分别于数组两端，比较<code>nums[i]</code>平方与<code>nums[j]</code>平方大小</p>
-<p>较大的放于result最左侧，同时对应指针向内移动一位，直至<code>i=j</code>(包含相等)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] sortedSquares(<span class="type">int</span>[] nums) &#123;</span><br><span class="line">        <span class="type">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> j=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> k=nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i]*nums[i]&lt;=nums[j]*nums[j])&#123;</span><br><span class="line">                result[k]=nums[j]*nums[j];</span><br><span class="line">                --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result[k]=nums[i]*nums[i];</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            --k;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          
+            <a class="article-more-a" href="/2024/09/26/%E7%AE%97%E6%B3%95-3-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/#more">more >></a>
+          
+        
       
 
 
@@ -733,11 +642,14 @@
 
 
 
+
+
   
     <article id="post-算法-2-移除元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -754,30 +666,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/">leetcode 27 移除元素</a></p>
+          
+          <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/remove-element/description/">leetcode 27 移除元素</a></p>
 <p>给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素。元素的顺序可能发生改变。然后返回 <code>nums</code> 中与 <code>val</code> 不同的元素的数量。</p>
 <p>假设 <code>nums</code> 中不等于 <code>val</code> 的元素数量为 <code>k</code>，要通过此题，您需要执行以下操作：</p>
 <ul>
 <li>更改 <code>nums</code> 数组，使 <code>nums</code> 的前 <code>k</code> 个元素包含不等于 <code>val</code> 的元素。<code>nums</code> 的其余元素和 <code>nums</code> 的大小并不重要。</li>
 <li>返回 <code>k</code>。</li>
 </ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="快慢指针法"><a href="#快慢指针法" class="headerlink" title="快慢指针法"></a>快慢指针法</h2><p>设置<code>slow</code>, <code>fast</code>两个指针，初始均为0</p>
-<ul>
-<li><code>fast</code>用于遍历数组</li>
-<li><code>slow</code>用于记录当前保留的元素</li>
-</ul>
-<p>无效元素：<code>fast</code>后移，<code>slow</code>不移；</p>
-<p>有效元素：放入<code>slow</code>指针位置，<code>fast</code>、<code>slow</code>均后移</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> slow=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fast=<span class="number">0</span>;fast&lt;nums.length;++fast)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[fast]!=val)&#123;</span><br><span class="line">                nums[slow]=nums[fast];</span><br><span class="line">                ++slow;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>时间复杂度：O(n)</li>
-<li>空间复杂度：O(1)</li>
-</ul>
-
+          
+            <a class="article-more-a" href="/2024/09/25/%E7%AE%97%E6%B3%95-2-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/#more">more >></a>
+          
+        
       
 
 
@@ -834,11 +735,14 @@
 
 
 
+
+
   
     <article id="post-算法-1.二分查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -855,30 +759,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-search/description/">leetcode 704 二分查找</a></p>
+          
+          <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-search/description/">leetcode 704 二分查找</a></p>
 <p>给定一个 <code>n</code> 个元素有序的（升序）整型数组 <code>nums</code> 和一个目标值 <code>target</code> ，写一个函数搜索 <code>nums</code> 中的 <code>target</code>，如果 <code>target</code> 存在返回下标，否则返回 <code>-1</code>。</p>
 <p>你必须编写一个具有 <code>O(log n)</code> 时间复杂度的算法。</p>
 <p><strong>示例 1:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [-1,0,3,5,9,12], target = 9</span><br><span class="line">输出: 4</span><br><span class="line">解释: 9 出现在 nums 中并且下标为 4</span><br></pre></td></tr></table></figure>
-
-<p><strong>示例 2:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [-1,0,3,5,9,12], target = 2</span><br><span class="line">输出: -1</span><br><span class="line">解释: 2 不存在 nums 中因此返回 -1</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>采用<strong>左闭右闭</strong>区间<code>[left,right]</code></p>
-<ul>
-<li><p>每次移动<code>left</code>, <code>right</code>分别设为<code>middle+1</code>, <code>middle-1</code>，不再重复取<code>middle</code>（因为已知一定不是<code>target</code>）</p>
-</li>
-<li><p>判定条件为 <code>while(right&gt;=target)</code>，<strong>要取<code>=</code>号</strong>，因为<code>left == right</code>是有意义的</p>
-</li>
-</ul>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="comment">// 避免当 target 小于nums[0] nums[nums.length - 1]时多次循环运算</span></span><br><span class="line">        <span class="keyword">if</span> (target &lt; nums[<span class="number">0</span>] || target &gt; nums[nums.length - <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123; <span class="comment">// nums[mid] &gt; target</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 未找到目标值</span></span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          
+            <a class="article-more-a" href="/2024/09/25/%E7%AE%97%E6%B3%95-1.%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/#more">more >></a>
+          
+        
       
 
 
@@ -935,11 +825,14 @@
 
 
 
+
+
   
     <article id="post-我的第一篇博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -956,11 +849,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
+          
+          <p>记录我的cs学习之路！</p>
 
-        <p>记录我的cs学习之路！</p>
-
+          
+        
       
 
 
@@ -1002,11 +896,14 @@
 
 
 
+
+
   
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -1023,23 +920,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+          
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          
+            <a class="article-more-a" href="/2024/09/20/hello-world/#more">more >></a>
+          
+        
       
 
 
@@ -1077,6 +965,8 @@
         
     </div>
 </aside>
+
+
 
 
 

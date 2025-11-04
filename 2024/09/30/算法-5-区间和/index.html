@@ -187,6 +187,14 @@
     
       <header class="article-header">
         
+        <div class="article-back-btn">
+          <a href="javascript:void(0);" onclick="goBack()" class="back-link" title="返回">
+            <i class="icon-circle-left"></i>
+            <span>返回</span>
+          </a>
+        </div>
+        
+        
   
     <h1 class="article-title" itemprop="name">
       算法-5.区间和
@@ -202,10 +210,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1070">kamacoder 58</a></p>
+          <p><a target="_blank" rel="noopener" href="https://kamacoder.com/problempage.php?pid=1070">kamacoder 58</a></p>
 <h6 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h6><p>给定一个整数数组 Array，请计算该数组在每个指定区间内元素的总和。</p>
 <h6 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h6><p>第一行输入为整数数组 Array 的长度 n，接下来 n 行，每行一个整数，表示数组的元素。随后的输入为需要计算总和的区间下标：a，b （b &gt; &#x3D; a），直至文件结束。</p>
 <h6 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h6><p>输出每个指定区间内元素的总和。</p>
@@ -218,6 +224,7 @@
 <p>为降低时间复杂度，在读入数组时直接保存<strong>前缀和</strong>，获得区间a、b后直接输出<code>vec[b]-vec[a-1]</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span>[] vec = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        <span class="type">int</span>[] p = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">presum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            vec[i] = scanner.nextInt();</span><br><span class="line">            presum += vec[i];</span><br><span class="line">            p[i] = presum;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (scanner.hasNextInt()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> sum;</span><br><span class="line">            <span class="keyword">if</span> (a == <span class="number">0</span>) &#123;</span><br><span class="line">                sum = p[b];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum = p[b] - p[a - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(sum);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+        
       
 
 
@@ -363,6 +370,81 @@
   
 
   
+
+
+
+<script>
+function goBack() {
+  var referrer = document.referrer;
+  var currentUrl = window.location.href;
+  var currentDomain = window.location.origin;
+  
+  // 检查来源是否为空或者来自其他域名
+  if (!referrer || referrer.indexOf(currentDomain) === -1) {
+    // 没有来源或来自外部，返回主页
+    window.location.href = '/';
+    return;
+  }
+  
+  // 检查来源是否来自标签页
+  if (referrer.indexOf('/tags/') !== -1) {
+    // 从标签页来的，返回标签页
+    window.location.href = referrer;
+  } else {
+    // 其他情况（如主页、归档等），返回主页
+    window.location.href = '/';
+  }
+}
+</script>
+<style>
+.article-back-btn {
+  margin-bottom: 15px;
+  padding-left: 7.6923%;
+  padding-top: 10px;
+}
+
+.article-back-btn .back-link {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.article-back-btn .back-link:hover {
+  color: #4d4d4d;
+  background-color: #f5f5f5;
+}
+
+.article-back-btn .back-link i {
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.article-back-btn .back-link span {
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .article-back-btn {
+    padding-left: 30px;
+    padding-top: 5px;
+  }
+  
+  .article-back-btn .back-link {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+  
+  .article-back-btn .back-link i {
+    font-size: 14px;
+  }
+}
+</style>
 
 
           </div>

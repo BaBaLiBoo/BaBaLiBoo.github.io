@@ -175,11 +175,16 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+
+
+  
   
     <article id="post-操作系统-2.1进程与线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -196,73 +201,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="进程基本内容"><a href="#进程基本内容" class="headerlink" title="进程基本内容"></a>进程基本内容</h2><h3 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h3><p>进程是程序的一次<strong>执行过程</strong></p>
+          
+          <h2 id="进程基本内容"><a href="#进程基本内容" class="headerlink" title="进程基本内容"></a>进程基本内容</h2><h3 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h3><p>进程是程序的一次<strong>执行过程</strong></p>
 <ul>
 <li>程序是静态的，进程是动态的</li>
 </ul>
-<h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><ul>
-<li><p>PCB：进程控制块。<strong>进程存在的唯一标志</strong>。进程结束时会回收PCB</p>
-<ul>
-<li>PID：进程ID，<strong>唯一的，不重复</strong></li>
-</ul>
-</li>
-<li><p>程序段</p>
-</li>
-<li><p>数据段</p>
-</li>
-</ul>
-<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><h3 id="进程的状态与转换"><a href="#进程的状态与转换" class="headerlink" title="进程的状态与转换"></a>进程的状态与转换</h3><p><img src="/../typora-user-images/image-20251030183614729.png" alt="image-20251030183614729"></p>
-<p>进程的状态转换必须<strong>一气呵成</strong>（利用“原语”实现）</p>
-<h3 id="相关原语"><a href="#相关原语" class="headerlink" title="相关原语"></a>相关原语</h3><p>原语用<strong>关&#x2F;开中断</strong>来实现，不可中断</p>
-<p><img src="/../typora-user-images/image-20251030190104354.png" alt="image-20251030190104354">阻塞和唤醒<strong>成对</strong>出现</p>
-<p><img src="/../typora-user-images/image-20251030193814183.png" alt="image-20251030193814183"></p>
-<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p><img src="/../typora-user-images/image-20251030221507985.png" alt="image-20251030221507985"></p>
-<ul>
-<li>基于<strong>存储区</strong>的共享（高级）</li>
-<li>基于数据结构的共享（低级）</li>
-</ul>
-<h3 id="2-消息传递"><a href="#2-消息传递" class="headerlink" title="2. 消息传递"></a>2. 消息传递</h3><p>进程间数据以<strong>格式化的消息</strong>为单位。</p>
-<p>消息头（进程ID，长度等）+消息体（实际数据）</p>
-<p>进程通过”发送&#x2F;接受消息“两个<strong>原语</strong>进行数据交换。</p>
-<ul>
-<li><p><strong>直接通信</strong>：直接指明要通信的进程ID</p>
-</li>
-<li><p><strong>间接通信</strong>：通过”信箱“</p>
-</li>
-</ul>
-<h3 id="3-管道通信"><a href="#3-管道通信" class="headerlink" title="3. 管道通信"></a>3. 管道通信</h3><p>  <img src="/../typora-user-images/image-20251030225030406.png" alt="image-20251030225030406"></p>
-<ul>
-<li><p>相比共享存储，要求数据读写<strong>先进先出</strong></p>
-</li>
-<li><p>管道数据一旦被读出就<strong>彻底消失</strong></p>
-</li>
-</ul>
-<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p>​     用于通知进程某个时间已经发生</p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><h3 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h3><p>线程是<strong>程序执行流的最小单位</strong>，是调度的基本单位（进程是资源分配的基本单位）</p>
-<p><strong>作用</strong>：每一个进程可以有多个线程，增加并发度</p>
-<ul>
-<li>切换进程开销大；同进程内切换线程开销小</li>
-</ul>
-<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><ol>
-<li><p><strong>用户级线程</strong>（用户态）</p>
-<p>简单。操作系统不支持线程，并发态不高。</p>
-</li>
-<li><p><strong>内核级线程</strong>（内核态）</p>
-<p>由操作系统完成，并发能力强。开销大</p>
-</li>
-</ol>
-<h3 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h3><ul>
-<li>一对一（内核级线程）</li>
-<li>多对一（用户级线程）</li>
-<li>多对多：n用户映射到m个内核级线程(n≥m)</li>
-</ul>
-<p><strong>注意</strong>：操作系统只看得见内核级线程，即<strong>内核级线程才是处理机分配的单位</strong></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="调度"><a href="#调度" class="headerlink" title="调度"></a>调度</h2><p>含义：按照某种算法决定<strong>处理任务的顺序</strong></p>
-<p><img src="/../typora-user-images/image-20251103231517432.png" alt="image-20251103231517432"></p>
-
+          
+            <a class="article-more-a" href="/2025/10/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.1%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/#more">more >></a>
+          
+        
       
 
 
@@ -315,11 +263,14 @@
 
 
 
+
+
   
     <article id="post-java-5-集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -336,10 +287,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="什么是集合"><a href="#什么是集合" class="headerlink" title="什么是集合"></a>什么是集合</h2><p>——若干<strong>确定元素</strong>构成的整体。</p>
+          
+          <h2 id="什么是集合"><a href="#什么是集合" class="headerlink" title="什么是集合"></a>什么是集合</h2><p>——若干<strong>确定元素</strong>构成的整体。</p>
 <h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4><ol>
 <li><p><strong>接口与实现分离</strong>：即接口只定义行为，不关心怎么做。例如有序表的接口是<code>List</code>，具体的实现类有<code>ArrayList</code>，<code>LinkedList</code>等</p>
 </li>
@@ -348,31 +298,10 @@
 <li><p>通过统一方式——<strong>迭代器</strong> (Iterator) 访问</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = list.iterator(); <span class="comment">// 获取遥控器</span></span><br><span class="line"><span class="keyword">while</span> (it.hasNext()) &#123;               <span class="comment">// 问：还有吗？</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> it.next();            <span class="comment">// 答：给我下一个</span></span><br><span class="line">    System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="集合的分类有哪些"><a href="#集合的分类有哪些" class="headerlink" title="集合的分类有哪些"></a>集合的分类有哪些</h2><ul>
-<li><p><strong>list</strong>：有序列表</p>
-</li>
-<li><p><strong>set</strong>：无重复元素</p>
-</li>
-<li><p><strong>map</strong>：键值对</p>
-</li>
-</ul>
-<h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><p>常用函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">list.add(i) <span class="comment">//末尾添加元素</span></span><br><span class="line">list.add(<span class="type">int</span> index, i) <span class="comment">//在指定索引添加元素</span></span><br><span class="line">list.remove(i) <span class="comment">//删除元素</span></span><br><span class="line">list.remove(<span class="type">int</span> index) <span class="comment">//删除指定索引的元素</span></span><br><span class="line">list.contains(i) <span class="comment">// 判断元素是否存在</span></span><br><span class="line">list.size() <span class="comment">//获取链表大小</span></span><br><span class="line">list.get(<span class="type">int</span> index) <span class="comment">//获取指定索引的元素</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>迭代器的实现原理是什么?</p>
-<p>为什么 new ArrayList&lt;&gt;()时建议指定初始化容量值</p>
-<p>为什么 Arraylist 默认情况下的扩容机制是扩容为原数组的1.5倍</p>
-<p>Arraylist是线程的安全吗</p>
-<p>CopyOnWriteArraylist 的实现原理<br>HashMap的添加元素流程<br>HashMap扩容加载因子为什么是0.75</p>
-<p>HashMap扩容为什么扩容为数组长度的2倍</p>
-<p>HashMap是线程的安全吗<br>ConcurrentHashMap的实现原理</p>
-
+          
+            <a class="article-more-a" href="/2025/10/29/java-5-%E9%9B%86%E5%90%88/#more">more >></a>
+          
+        
       
 
 
@@ -429,11 +358,14 @@
 
 
 
+
+
   
     <article id="post-系统结构-2-指令系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -450,49 +382,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="指令系统的分类"><a href="#指令系统的分类" class="headerlink" title="指令系统的分类"></a>指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
+          
+          <h2 id="指令系统的分类"><a href="#指令系统的分类" class="headerlink" title="指令系统的分类"></a>指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
 <p>以<code>C=A+B</code>为例说明不同指令系统的特性</p>
-<ul>
-<li><strong>堆栈型</strong></li>
-</ul>
-<p>计算<strong>只能</strong>从栈顶拿数据，计算完也<strong>只能</strong>放回栈顶。</p>
-<p>代码：</p>
-<p>​	<code>Push A</code> (内存 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 堆栈)</p>
-<p>​	<code>Push B</code> (内存 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 堆栈)</p>
-<p>​	<code>Add</code> ([计算数]堆栈 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> [计算结果]堆栈) </p>
-<p>​	<code>Pop C</code> (堆栈 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存)</p>
-<ul>
-<li><strong>累加器型</strong></li>
-</ul>
-<p>一个操作数必须来自<strong>累加器</strong>，另一个操作数必须来自<strong>内存</strong>。结果必须放回<strong>累加器</strong>。</p>
-<p>代码：</p>
-<p>​	<code>Load A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 累加器)</p>
-<p>​	<code>Add B</code> (累加器 + 内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 累加器) </p>
-<p>​	<code>Store C</code> (累加器 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
-<ul>
-<li><p><strong>寄存器型</strong></p>
-<ul>
-<li><strong>寄存器-内存型</strong></li>
-</ul>
-<p>累加器型的“升级版”。计算时，一个操作数来自<strong>任意</strong>寄存器，另一个可以来自内存。</p>
-<p>代码：</p>
-<p>​    <code>Load R1, A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R1</code>) </p>
-<p>​    <code>Add R3, R1, B</code> (<code>R1</code> + 内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>) </p>
-<p>​    <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
-<ul>
-<li><strong>寄存器-寄存器型</strong></li>
-</ul>
-<p>ALU<strong>绝对不能</strong>直接访问内存。所有操作数必须先从内存 <code>Load</code>到寄存器中</p>
-<p>代码：</p>
-<p>​    <code>Load R1, A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R1</code>) </p>
-<p>​    <code>Load R2, B</code> (内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R2</code>) </p>
-<p>​    <code>Add R3, R1, R2</code> (寄存器 <code>R1</code> + 寄存器 <code>R2</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>)     <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
-</li>
-</ul>
-<h2 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h2><h2 id="寻址技术"><a href="#寻址技术" class="headerlink" title="寻址技术"></a>寻址技术</h2><h2 id="指令格式的优化设计"><a href="#指令格式的优化设计" class="headerlink" title="指令格式的优化设计"></a>指令格式的优化设计</h2><h2 id="指令系统的功能设计"><a href="#指令系统的功能设计" class="headerlink" title="指令系统的功能设计"></a>指令系统的功能设计</h2><h2 id="综合实例：-MIPS-指令集"><a href="#综合实例：-MIPS-指令集" class="headerlink" title="综合实例： MIPS 指令集"></a>综合实例： MIPS 指令集</h2>
+          
+            <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/#more">more >></a>
+          
+        
       
 
 
@@ -545,11 +442,14 @@
 
 
 
+
+
   
     <article id="post-系统结构-1-基本概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -566,10 +466,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="定量准则"><a href="#定量准则" class="headerlink" title="定量准则"></a>定量准则</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
+          
+          <h2 id="定量准则"><a href="#定量准则" class="headerlink" title="定量准则"></a>定量准则</h2><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><ul>
 <li>系统加速比 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">S_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：</li>
 </ul>
 <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><msub><mi>T</mi><mn>0</mn></msub><msub><mi>T</mi><mi>n</mi></msub></mfrac><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><msub><mi>F</mi><mi>e</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mfrac><msub><mi>F</mi><mi>e</mi></msub><msub><mi>S</mi><mi>e</mi></msub></mfrac></mrow></mfrac></mrow><annotation encoding="application/x-tex">
@@ -582,32 +481,10 @@ S_n=\frac{T_0}{T_n}=\frac{1}{(1-F_e)+\frac{F_e}{S_e}}
 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>e</mi></msub></mrow><annotation encoding="application/x-tex">S_e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">e</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>：部件加速比
 
 <h4 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h4><p>假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的10倍和改进FP指令速度为原来的2倍，哪种方案更好？</p>
-<p>① </p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mn>0.2</mn><mo stretchy="false">)</mo><mo>+</mo><mfrac><mn>0.2</mn><mn>10</mn></mfrac></mrow></mfrac><mo>=</mo><mn>1.22</mn></mrow><annotation encoding="application/x-tex">
-S_n=\frac{1}{(1-0.2)+\frac{0.2}{10}}=1.22
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4015em;vertical-align:-1.0801em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.2649em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0801em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.22</span></span></span></span></span>
-<p>②</p>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>=</mo><mfrac><mn>1</mn><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mn>0.5</mn><mo stretchy="false">)</mo><mo>+</mo><mfrac><mn>0.5</mn><mn>2</mn></mfrac></mrow></mfrac><mo>=</mo><mn>1.33</mn></mrow><annotation encoding="application/x-tex">
-S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4015em;vertical-align:-1.0801em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.2649em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">0.5</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">0.5</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.0801em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.33</span></span></span></span></span>
-<p>∴ 方案2 优于方案1</p>
-<h2 id="CPU性能公式"><a href="#CPU性能公式" class="headerlink" title="CPU性能公式"></a>CPU性能公式</h2><p><strong>CPU时间</strong>&#x3D; IC × CPI × 时钟周期长度</p>
-<ul>
-<li>IC：指令总数</li>
-<li>CPI：1条指令所需平均时钟周期数</li>
-</ul>
-<h2 id="系统结构的发展"><a href="#系统结构的发展" class="headerlink" title="系统结构的发展"></a>系统结构的发展</h2><h4 id="冯诺依曼结构"><a href="#冯诺依曼结构" class="headerlink" title="冯诺依曼结构"></a>冯诺依曼结构</h4><p><img src="/../typora-user-images/image-20251027231623387.png" alt="image-20251027231623387"></p>
-<h4 id="目前的改进"><a href="#目前的改进" class="headerlink" title="目前的改进"></a>目前的改进</h4><ol>
-<li><p>以主存为中心，操作并行</p>
-</li>
-<li><p>指令执行由数据驱动，指令&amp;数据分开存储</p>
-</li>
-<li><p>采用按内容访问的相联存</p>
-</li>
-<li><p>…</p>
-</li>
-</ol>
-
+          
+            <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more">more >></a>
+          
+        
       
 
 
@@ -660,11 +537,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-操作系统-1.6虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -681,18 +561,16 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="虚拟机分类"><a href="#虚拟机分类" class="headerlink" title="虚拟机分类"></a>虚拟机分类</h1><ul>
+          
+          <h1 id="虚拟机分类"><a href="#虚拟机分类" class="headerlink" title="虚拟机分类"></a>虚拟机分类</h1><ul>
 <li>直接运行在硬件上（性能高、可迁移性差）</li>
 </ul>
-<p><img src="/../typora-user-images/image-20251030174624076.png" alt="image-20251030174624076"></p>
-<ul>
-<li>运行在现有的宿主操作系统上（性能略低、可迁移性高）</li>
-</ul>
-<p><img src="/../typora-user-images/image-20251030174635399.png" alt="image-20251030174635399"></p>
-
+<p><img src="/../typora-user-images/image-20251030174624076.png" alt="image-20251030174624076">
+          
+            <a class="article-more-a" href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.6%E8%99%9A%E6%8B%9F%E6%9C%BA/#more">more >></a>
+          
+        
       
 
 
@@ -745,11 +623,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-操作系统-1.4OS体系结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -766,21 +647,17 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="大内核-微内核"><a href="#大内核-微内核" class="headerlink" title="大内核&amp;微内核"></a>大内核&amp;微内核</h2><p><strong>内核最核心部分</strong>：时钟管理、中断处理、原语</p>
+          
+          <h2 id="大内核-微内核"><a href="#大内核-微内核" class="headerlink" title="大内核&amp;微内核"></a>大内核&amp;微内核</h2><p><strong>内核最核心部分</strong>：时钟管理、中断处理、原语</p>
 <ul>
 <li>两种内核区别：内核的<strong>划分</strong>不同</li>
 </ul>
 <p><img src="/../typora-user-images/image-20251027105054957.png" alt="image-20251027105054957"></p>
-<h2 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h2><p><img src="/../typora-user-images/image-20251027110136492.png" alt="image-20251027110136492"></p>
-<p>每层可调用<strong>更低一层</strong></p>
-<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p><img src="/../typora-user-images/image-20251027110930474.png" alt="image-20251027110930474"></p>
-<p>优点：可使多个模块同时开发，效率高，适应性强</p>
-<h2 id="外核"><a href="#外核" class="headerlink" title="外核"></a>外核</h2><p><img src="/../typora-user-images/image-20251027111134886.png" alt="image-20251027111134886"></p>
-<p>功能：给用户分配未经抽象的硬件资源</p>
-
+          
+            <a class="article-more-a" href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.4OS%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#more">more >></a>
+          
+        
       
 
 
@@ -833,11 +710,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-操作系统-1.3系统调用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -854,18 +734,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="系统调用-库函数的区别"><a href="#系统调用-库函数的区别" class="headerlink" title="系统调用&amp;库函数的区别"></a>系统调用&amp;库函数的区别</h2><p>系统调用 比 高级语言库函数 <strong>更底层</strong></p>
-<p><img src="/../typora-user-images/image-20251027102918113.png" alt="image-20251027102918113"></p>
-<h2 id="系统调用必要性"><a href="#系统调用必要性" class="headerlink" title="系统调用必要性"></a>系统调用必要性</h2><p>实现对<strong>共享资源</strong>的互斥访问：操作系统对共享资源统一管理，向上提供”系统调用“</p>
-<p><img src="/../typora-user-images/image-20251027103442403.png" alt="image-20251027103442403"></p>
-<h2 id="系统调用过程"><a href="#系统调用过程" class="headerlink" title="系统调用过程"></a>系统调用过程</h2><p>应用程序——<strong>传参</strong>指令——（用户态）CPU</p>
-<p>应用程序——<strong>陷入</strong>指令——（用户态）CPU内中断</p>
-<p>系统调用入口程序——指令——（核心态）CPU</p>
-<p>系统调用的处理程序——指令——（核心态）CPU</p>
-
+          
+          <h2 id="系统调用-库函数的区别"><a href="#系统调用-库函数的区别" class="headerlink" title="系统调用&amp;库函数的区别"></a>系统调用&amp;库函数的区别</h2><p>系统调用 比 高级语言库函数 <strong>更底层</strong></p>
+<p><img src="/../typora-user-images/image-20251027102918113.png" alt="image-20251027102918113">
+          
+            <a class="article-more-a" href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.3%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/#more">more >></a>
+          
+        
       
 
 
@@ -918,11 +794,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-随笔-地坛，我的乌托邦" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -939,17 +818,16 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="地坛，我的乌托邦"><a href="#地坛，我的乌托邦" class="headerlink" title="地坛，我的乌托邦"></a>地坛，我的乌托邦</h1><p>小学，在语文课本上第一次读到史铁生的《秋天的怀念》，他在意气风发的21岁失去双腿，从此变得喜怒无常，对母亲恶语相向。“她出去了，就再也没回来”，沉重的故事我总是有意地快速翻过，不想被它反复刺痛。</p>
+          
+          <h1 id="地坛，我的乌托邦"><a href="#地坛，我的乌托邦" class="headerlink" title="地坛，我的乌托邦"></a>地坛，我的乌托邦</h1><p>小学，在语文课本上第一次读到史铁生的《秋天的怀念》，他在意气风发的21岁失去双腿，从此变得喜怒无常，对母亲恶语相向。“她出去了，就再也没回来”，沉重的故事我总是有意地快速翻过，不想被它反复刺痛。</p>
 <p>高一，我第一次读了史铁生的《我与地坛》，称之为神作绝不为过。其中最喜欢的一篇是《好运设计》，那是作者为自己设计的充满好运的来世。“宇宙在走向热寂。但此刻宇宙正在旋转，正在飞驰，正在高歌狂舞，正借助了星汉迢迢，借助了光阴漫漫，享受着它的路途，享受着坍塌后不死的沉吟，享受着爆炸后辉煌的咏叹，享受着追寻与等待，这才是幸运，这才是真正的幸运，恰恰死亡之前这波澜壮阔的挥洒，这精彩纷呈的燃烧才是幸运者得天独厚的机会。”我震惊于人类可以写出这般伟大通透的文字，仿佛了悟了命运，参透了生死。“上帝爱我！—我们的设计只剩这一句话了，也许从来就只有这一句话吧。”我笔记本的封面依然写着这句话。在我高中那贫瘠的精神世界里，可谓带来一场盛大的甘雨。  </p>
 <p>后来有一天，突然的噩耗有如晴天霹雳将生死第一次摆在我眼前。除了睡觉做题我找不到任何可以摆脱这痛苦的办法，终于理解《病隙碎笔》中那句“其实每时每刻我们都是幸运的，因为任何灾难的前面都可能再加一个“更”字。”难眠的晚上我一遍又一遍地读《我与地坛》，仿佛在请教一位智者，我该如何走出这困境。他告诉我“对命运而言，休伦公道”，他说“死是一件不必急于求成的事，死是一个必然会降临的节日”，他说“苦难把我推到悬崖，我就在这里坐下，唱支歌给你听”。这本书是我从市图书馆借来的，借了又还还了又借，早就翻得破破烂烂。史铁生的地坛也是荒凉破败，他失魂落魄的灵魂在这里得以片刻栖息。如果史铁生的地坛在北平，我想这本书便是我的地坛。  </p>
 <p>上大学后，我买了本新的精装版《我与地坛》放在宿舍床边。二十岁是人生的雨季，充满迷茫焦虑自责矛盾自我怀疑，好像被骤然抛向成年人的世界，一切混乱不堪。我于是一次又一次地走进这地坛寻找答案，他告诉我“生命的意义却似轮回，每个人都得从头寻找”。书里找不到现实难题的解法，但唯在这寻找中才可能与前贤汇合，“唯当走过林莽，走过激流，走过深渊，走过思悟一向的艰途，步上山巅之时你才能说继承。”  </p>
-<p>我不敢说读懂了史铁生，自觉还差太远太远，或许到了三十岁四十岁五十岁我依然会时不时重读这本书，带着新的迷茫，新的困惑，走进这园子。“因为这园子，我常感恩于自己的命运。”在喧嚣的城市里，有这样一个宁静的去处，实是上帝的馈赠。  </p>
-<p>我一直想去一次地坛公园，在北京萧瑟的秋天里，亲自看一看这历经沧桑的古园，可惜一直找不到机会。但这也不是什么必须要做的事，因为地坛是史铁生的地坛，正如他所说：</p>
-<p>“我已不在地坛，地坛在我。”</p>
-
+          
+            <a class="article-more-a" href="/2025/10/26/%E9%9A%8F%E7%AC%94-%E5%9C%B0%E5%9D%9B%EF%BC%8C%E6%88%91%E7%9A%84%E4%B9%8C%E6%89%98%E9%82%A6/#more">more >></a>
+          
+        
       
 
 
@@ -1002,11 +880,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-java-4.泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -1023,27 +904,15 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h2><p>一种<strong>类型模板</strong></p>
+          
+          <h2 id="什么是泛型"><a href="#什么是泛型" class="headerlink" title="什么是泛型"></a>什么是泛型</h2><p>一种<strong>类型模板</strong></p>
 <p>允许写一个类但<strong>不把数据类型写死</strong>，而是用一个占位符<T>代替。</p>
-<h3 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h3><ul>
-<li>类型安全。源头上杜绝了类型放错的可能</li>
-<li>方便。不用手动强转类型</li>
-</ul>
-<h2 id="类型擦除"><a href="#类型擦除" class="headerlink" title="类型擦除"></a>类型擦除</h2><blockquote>
-<p> Java语言的泛型实现方式是——擦拭法</p>
-</blockquote>
-<p>Java 的泛型只存在于<strong>编译期</strong>，在<strong>运行期</strong>（JVM执行时）会被全部“擦掉”，替换成 <code>Object</code> 和强制类型转换</p>
-<p>所有工作由编译器来做，虚拟机一无所知！</p>
-<h4 id="擦拭带来的局限"><a href="#擦拭带来的局限" class="headerlink" title="擦拭带来的局限"></a>擦拭带来的局限</h4><ul>
-<li>运行时，所有泛型箱子都“长得一样”。</li>
-<li>不能用 <code>instanceof</code> 检查泛型标签（<code>instanceof</code> 是在<strong>运行时</strong>检查的）</li>
-<li>不能用基本类 int, double，要用<code>Integer</code>、<code>Double</code>（Object才可以被安全擦拭）</li>
-<li>不能 <code>new T()</code></li>
-</ul>
-
+<h3 id="泛型的好处"><a href="#泛型的好处" class="headerlink" title="泛型的好处"></a>泛型的好处</h3>
+          
+            <a class="article-more-a" href="/2025/10/25/java-4.%E6%B3%9B%E5%9E%8B/#more">more >></a>
+          
+        
       
 
 
@@ -1100,11 +969,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
 
 
 
+
+
   
     <article id="post-java-3.反射&amp;动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
+        
         
   
     <h1 itemprop="name">
@@ -1121,69 +993,14 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>一种java的基础API，通过实例动态地<strong>获取和操作</strong>一个类&#x2F;对象的所有内部信息的能力，甚至可无视<code>private</code>限制</p>
+          
+          <h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>一种java的基础API，通过实例动态地<strong>获取和操作</strong>一个类&#x2F;对象的所有内部信息的能力，甚至可无视<code>private</code>限制</p>
 <h3 id="反射的好处"><a href="#反射的好处" class="headerlink" title="反射的好处"></a>反射的好处</h3><p>极大的<strong>灵活性、通用性</strong></p>
-<p>可以编写“通用代码”，在运行时再动态地决定加载谁、执行谁</p>
-<h3 id="反射应用场景"><a href="#反射应用场景" class="headerlink" title="反射应用场景"></a>反射应用场景</h3><ul>
-<li>⭐<strong>框架：</strong> <strong>Spring</strong>、MyBatis 等框架用它来实现 <strong>IoC&#x2F;DI</strong> (依赖注入) 和 <strong>AOP</strong> (动态代理)</li>
-<li><strong>动态加载：</strong> 比如 <code>Class.forName()</code> 根据配置文件里的一个类名字符串，在运行时加载该类并创建实例（如 JDBC 驱动）。</li>
-</ul>
-<h3 id="反射核心"><a href="#反射核心" class="headerlink" title="反射核心"></a>反射核心</h3><p><strong>Class实例</strong>：JVM为加载的每个类&#x2F;接口都创建了一个唯一的<code>Class</code>对象，它储存了该类型的所有元数据（名字、方法、字段等）</p>
-<h3 id="访问字段"><a href="#访问字段" class="headerlink" title="访问字段"></a>访问字段</h3><p>通过反射可以获取、设置private类型实例的字段值，但首先要调用 <code>setAccessible(true)</code></p>
-<ul>
-<li>反射是一种<strong>非常规手段</strong></li>
-</ul>
-<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><h3 id="两种方式"><a href="#两种方式" class="headerlink" title="两种方式"></a>两种方式</h3><ul>
-<li><p><strong>JDK 动态代理</strong>：JDK提供的动态创建接口对象的方式</p>
-</li>
-<li><p><strong>CGLIB 动态代理</strong>（第三方库，Spring 框架大量使用）</p>
-</li>
-<li><p><strong>区别</strong></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>对比维度</strong></th>
-<th><strong>JDK 动态代理</strong></th>
-<th><strong>CGLIB 动态代理</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>实现原理</strong></td>
-<td>在运行时，动态<strong>实现</strong>目标类所实现的<strong>接口</strong>，造出一个“兄弟”类。</td>
-<td>在运行时，动态<strong>继承</strong>目标类，造出一个“儿子”类（子类）。</td>
-</tr>
-<tr>
-<td><strong>核心要求</strong></td>
-<td>目标类<strong>必须实现接口</strong>。</td>
-<td>目标类<strong>不能是 <code>final</code> 的</strong>（因为 <code>final</code> 类无法被继承）。</td>
-</tr>
-<tr>
-<td><strong>性能</strong></td>
-<td>在早期版本中创建代理较快，但现代 JVM 中两者性能差异已很小。</td>
-<td>无法代理 <code>final</code> 方法（因为 <code>final</code> 方法无法被重写）。</td>
-</tr>
-</tbody></table>
-<h3 id="原理：拦截-增强"><a href="#原理：拦截-增强" class="headerlink" title="原理：拦截+增强"></a>原理：拦截+增强</h3><p>运行时系统给你的不是真实对象，而是造出的一个<strong>代理对象</strong>（中介），当你调用它的方法时，它会<strong>拦截</strong>这个调用，执行一些**“增强”**逻辑（自己定义的额外逻辑），最后再可选地调用真实对象</p>
-<ul>
-<li><strong>动态代理</strong> 是 <strong>AOP</strong> ( 面向切面编程 ) 的核心技术之一。AOP 允许你把“横切”多个业务的通用功能从业务代码中抽离出来，集中管理。</li>
-</ul>
-<h3 id="动-静态代理方法"><a href="#动-静态代理方法" class="headerlink" title="动&#x2F;静态代理方法"></a>动&#x2F;静态代理方法</h3><ul>
-<li><strong>静态代理</strong>(Proxy 设计模式)<ul>
-<li>思想：在编译期就为特定类手动创建“一对一”的代理类</li>
-<li>问题是：如果有100个服务，就必须<strong>手动编写100个</strong>对应的代理类</li>
-</ul>
-</li>
-<li><strong>动态代理</strong>（JDK <code>java.lang.reflect.Proxy</code>）<ul>
-<li>思想：让 JVM 在运行时帮我自动生成这些代理类</li>
-</ul>
-</li>
-</ul>
-
+          
+            <a class="article-more-a" href="/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#more">more >></a>
+          
+        
       
 
 
@@ -1236,6 +1053,8 @@ S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33
         
     </div>
 </aside>
+
+
 
 
 

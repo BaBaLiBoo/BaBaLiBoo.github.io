@@ -184,6 +184,14 @@
     
       <header class="article-header">
         
+        <div class="article-back-btn">
+          <a href="javascript:void(0);" onclick="goBack()" class="back-link" title="返回">
+            <i class="icon-circle-left"></i>
+            <span>返回</span>
+          </a>
+        </div>
+        
+        
   
     <h1 class="article-title" itemprop="name">
       随笔-地坛，我的乌托邦
@@ -199,10 +207,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="地坛，我的乌托邦"><a href="#地坛，我的乌托邦" class="headerlink" title="地坛，我的乌托邦"></a>地坛，我的乌托邦</h1><p>小学，在语文课本上第一次读到史铁生的《秋天的怀念》，他在意气风发的21岁失去双腿，从此变得喜怒无常，对母亲恶语相向。“她出去了，就再也没回来”，沉重的故事我总是有意地快速翻过，不想被它反复刺痛。</p>
+          <h1 id="地坛，我的乌托邦"><a href="#地坛，我的乌托邦" class="headerlink" title="地坛，我的乌托邦"></a>地坛，我的乌托邦</h1><p>小学，在语文课本上第一次读到史铁生的《秋天的怀念》，他在意气风发的21岁失去双腿，从此变得喜怒无常，对母亲恶语相向。“她出去了，就再也没回来”，沉重的故事我总是有意地快速翻过，不想被它反复刺痛。</p>
 <p>高一，我第一次读了史铁生的《我与地坛》，称之为神作绝不为过。其中最喜欢的一篇是《好运设计》，那是作者为自己设计的充满好运的来世。“宇宙在走向热寂。但此刻宇宙正在旋转，正在飞驰，正在高歌狂舞，正借助了星汉迢迢，借助了光阴漫漫，享受着它的路途，享受着坍塌后不死的沉吟，享受着爆炸后辉煌的咏叹，享受着追寻与等待，这才是幸运，这才是真正的幸运，恰恰死亡之前这波澜壮阔的挥洒，这精彩纷呈的燃烧才是幸运者得天独厚的机会。”我震惊于人类可以写出这般伟大通透的文字，仿佛了悟了命运，参透了生死。“上帝爱我！—我们的设计只剩这一句话了，也许从来就只有这一句话吧。”我笔记本的封面依然写着这句话。在我高中那贫瘠的精神世界里，可谓带来一场盛大的甘雨。  </p>
 <p>后来有一天，突然的噩耗有如晴天霹雳将生死第一次摆在我眼前。除了睡觉做题我找不到任何可以摆脱这痛苦的办法，终于理解《病隙碎笔》中那句“其实每时每刻我们都是幸运的，因为任何灾难的前面都可能再加一个“更”字。”难眠的晚上我一遍又一遍地读《我与地坛》，仿佛在请教一位智者，我该如何走出这困境。他告诉我“对命运而言，休伦公道”，他说“死是一件不必急于求成的事，死是一个必然会降临的节日”，他说“苦难把我推到悬崖，我就在这里坐下，唱支歌给你听”。这本书是我从市图书馆借来的，借了又还还了又借，早就翻得破破烂烂。史铁生的地坛也是荒凉破败，他失魂落魄的灵魂在这里得以片刻栖息。如果史铁生的地坛在北平，我想这本书便是我的地坛。  </p>
 <p>上大学后，我买了本新的精装版《我与地坛》放在宿舍床边。二十岁是人生的雨季，充满迷茫焦虑自责矛盾自我怀疑，好像被骤然抛向成年人的世界，一切混乱不堪。我于是一次又一次地走进这地坛寻找答案，他告诉我“生命的意义却似轮回，每个人都得从头寻找”。书里找不到现实难题的解法，但唯在这寻找中才可能与前贤汇合，“唯当走过林莽，走过激流，走过深渊，走过思悟一向的艰途，步上山巅之时你才能说继承。”  </p>
@@ -210,6 +216,7 @@
 <p>我一直想去一次地坛公园，在北京萧瑟的秋天里，亲自看一看这历经沧桑的古园，可惜一直找不到机会。但这也不是什么必须要做的事，因为地坛是史铁生的地坛，正如他所说：</p>
 <p>“我已不在地坛，地坛在我。”</p>
 
+        
       
 
 
@@ -351,6 +358,81 @@
   
 
   
+
+
+
+<script>
+function goBack() {
+  var referrer = document.referrer;
+  var currentUrl = window.location.href;
+  var currentDomain = window.location.origin;
+  
+  // 检查来源是否为空或者来自其他域名
+  if (!referrer || referrer.indexOf(currentDomain) === -1) {
+    // 没有来源或来自外部，返回主页
+    window.location.href = '/';
+    return;
+  }
+  
+  // 检查来源是否来自标签页
+  if (referrer.indexOf('/tags/') !== -1) {
+    // 从标签页来的，返回标签页
+    window.location.href = referrer;
+  } else {
+    // 其他情况（如主页、归档等），返回主页
+    window.location.href = '/';
+  }
+}
+</script>
+<style>
+.article-back-btn {
+  margin-bottom: 15px;
+  padding-left: 7.6923%;
+  padding-top: 10px;
+}
+
+.article-back-btn .back-link {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.article-back-btn .back-link:hover {
+  color: #4d4d4d;
+  background-color: #f5f5f5;
+}
+
+.article-back-btn .back-link i {
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.article-back-btn .back-link span {
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .article-back-btn {
+    padding-left: 30px;
+    padding-top: 5px;
+  }
+  
+  .article-back-btn .back-link {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+  
+  .article-back-btn .back-link i {
+    font-size: 14px;
+  }
+}
+</style>
 
 
           </div>

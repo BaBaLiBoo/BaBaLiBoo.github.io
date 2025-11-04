@@ -185,6 +185,14 @@
     
       <header class="article-header">
         
+        <div class="article-back-btn">
+          <a href="javascript:void(0);" onclick="goBack()" class="back-link" title="返回">
+            <i class="icon-circle-left"></i>
+            <span>返回</span>
+          </a>
+        </div>
+        
+        
   
     <h1 class="article-title" itemprop="name">
       java-1.背景
@@ -200,10 +208,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
         
-
-        <h1 id="The-background-of-JAVA"><a href="#The-background-of-JAVA" class="headerlink" title="The background of JAVA"></a>The background of JAVA</h1><blockquote>
+          <h1 id="The-background-of-JAVA"><a href="#The-background-of-JAVA" class="headerlink" title="The background of JAVA"></a>The background of JAVA</h1><blockquote>
 <p>我亦无他，唯手熟尔</p>
 </blockquote>
 <h2 id="Java诞生"><a href="#Java诞生" class="headerlink" title="Java诞生"></a>Java诞生</h2><ul>
@@ -264,6 +270,7 @@
 <li><code>exit</code> 退出</li>
 </ul>
 
+        
       
 
 
@@ -409,6 +416,81 @@
   
 
   
+
+
+
+<script>
+function goBack() {
+  var referrer = document.referrer;
+  var currentUrl = window.location.href;
+  var currentDomain = window.location.origin;
+  
+  // 检查来源是否为空或者来自其他域名
+  if (!referrer || referrer.indexOf(currentDomain) === -1) {
+    // 没有来源或来自外部，返回主页
+    window.location.href = '/';
+    return;
+  }
+  
+  // 检查来源是否来自标签页
+  if (referrer.indexOf('/tags/') !== -1) {
+    // 从标签页来的，返回标签页
+    window.location.href = referrer;
+  } else {
+    // 其他情况（如主页、归档等），返回主页
+    window.location.href = '/';
+  }
+}
+</script>
+<style>
+.article-back-btn {
+  margin-bottom: 15px;
+  padding-left: 7.6923%;
+  padding-top: 10px;
+}
+
+.article-back-btn .back-link {
+  display: inline-flex;
+  align-items: center;
+  color: #999;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.article-back-btn .back-link:hover {
+  color: #4d4d4d;
+  background-color: #f5f5f5;
+}
+
+.article-back-btn .back-link i {
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.article-back-btn .back-link span {
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .article-back-btn {
+    padding-left: 30px;
+    padding-top: 5px;
+  }
+  
+  .article-back-btn .back-link {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+  
+  .article-back-btn .back-link i {
+    font-size: 14px;
+  }
+}
+</style>
 
 
           </div>
