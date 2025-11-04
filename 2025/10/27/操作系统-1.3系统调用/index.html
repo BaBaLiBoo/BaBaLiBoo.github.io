@@ -6,26 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>操作系统-进程与线程 | BaBaLiBoo</title>
+  <title>操作系统-系统调用 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基本内容进程的概念进程是程序的一次执行过程  程序是静态的，进程是动态的  进程的组成 PCB：进程控制块。进程存在的唯一标志。进程结束时会回收PCB  PID：进程ID，唯一的，不重复   程序段  数据段   进程控制进程的状态与转换 进程的状态转换必须一气呵成（利用“原语”实现） 相关原语原语用关&#x2F;开中断来实现，不可中断 阻塞和唤醒成对出现  进程通信1. 共享存储  基于存储区的">
+  <meta name="description" content="系统调用&amp;库函数的区别系统调用 比 高级语言库函数 更底层  系统调用必要性实现对共享资源的互斥访问：操作系统对共享资源统一管理，向上提供”系统调用“  系统调用过程应用程序——传参指令——（用户态）CPU 应用程序——陷入指令——（用户态）CPU内中断 系统调用入口程序——指令——（核心态）CPU 系统调用的处理程序——指令——（核心态）CPU">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统-进程与线程">
-<meta property="og:url" content="http://example.com/2025/10/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:title" content="操作系统-系统调用">
+<meta property="og:url" content="http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.3%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="基本内容进程的概念进程是程序的一次执行过程  程序是静态的，进程是动态的  进程的组成 PCB：进程控制块。进程存在的唯一标志。进程结束时会回收PCB  PID：进程ID，唯一的，不重复   程序段  数据段   进程控制进程的状态与转换 进程的状态转换必须一气呵成（利用“原语”实现） 相关原语原语用关&#x2F;开中断来实现，不可中断 阻塞和唤醒成对出现  进程通信1. 共享存储  基于存储区的">
+<meta property="og:description" content="系统调用&amp;库函数的区别系统调用 比 高级语言库函数 更底层  系统调用必要性实现对共享资源的互斥访问：操作系统对共享资源统一管理，向上提供”系统调用“  系统调用过程应用程序——传参指令——（用户态）CPU 应用程序——陷入指令——（用户态）CPU内中断 系统调用入口程序——指令——（核心态）CPU 系统调用的处理程序——指令——（核心态）CPU">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030183614729.png">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030190104354.png">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030193814183.png">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030221507985.png">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030225030406.png">
-<meta property="article:published_time" content="2025-10-30T09:50:50.000Z">
-<meta property="article:modified_time" content="2025-10-30T15:30:03.260Z">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251027102918113.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251027103442403.png">
+<meta property="article:published_time" content="2025-10-27T02:08:21.000Z">
+<meta property="article:modified_time" content="2025-10-27T02:46:13.398Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251030183614729.png">
+<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251027102918113.png">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
@@ -185,20 +182,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统-进程与线程" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-1.3系统调用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统-进程与线程
+      操作系统-系统调用
     </h1>
   
 
         
-        <a href="/2025/10/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2025-10-30T09:50:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-30</time>
+        <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.3%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2025-10-27T02:08:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
 </a>
         
       </header>
@@ -208,48 +205,14 @@
 
         
 
-        <h2 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h2><h3 id="进程的概念"><a href="#进程的概念" class="headerlink" title="进程的概念"></a>进程的概念</h3><p>进程是程序的一次<strong>执行过程</strong></p>
-<ul>
-<li>程序是静态的，进程是动态的</li>
-</ul>
-<h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><ul>
-<li><p>PCB：进程控制块。<strong>进程存在的唯一标志</strong>。进程结束时会回收PCB</p>
-<ul>
-<li>PID：进程ID，<strong>唯一的，不重复</strong></li>
-</ul>
-</li>
-<li><p>程序段</p>
-</li>
-<li><p>数据段</p>
-</li>
-</ul>
-<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><h3 id="进程的状态与转换"><a href="#进程的状态与转换" class="headerlink" title="进程的状态与转换"></a>进程的状态与转换</h3><p><img src="/../typora-user-images/image-20251030183614729.png" alt="image-20251030183614729"></p>
-<p>进程的状态转换必须<strong>一气呵成</strong>（利用“原语”实现）</p>
-<h3 id="相关原语"><a href="#相关原语" class="headerlink" title="相关原语"></a>相关原语</h3><p>原语用<strong>关&#x2F;开中断</strong>来实现，不可中断</p>
-<p><img src="/../typora-user-images/image-20251030190104354.png" alt="image-20251030190104354">阻塞和唤醒<strong>成对</strong>出现</p>
-<p><img src="/../typora-user-images/image-20251030193814183.png" alt="image-20251030193814183"></p>
-<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><h3 id="1-共享存储"><a href="#1-共享存储" class="headerlink" title="1. 共享存储"></a>1. 共享存储</h3><p><img src="/../typora-user-images/image-20251030221507985.png" alt="image-20251030221507985"></p>
-<ul>
-<li>基于<strong>存储区</strong>的共享（高级）</li>
-<li>基于数据结构的共享（低级）</li>
-</ul>
-<h3 id="2-消息传递"><a href="#2-消息传递" class="headerlink" title="2. 消息传递"></a>2. 消息传递</h3><p>进程间数据以<strong>格式化的消息</strong>为单位。</p>
-<p>消息头（进程ID，长度等）+消息体（实际数据）</p>
-<p>进程通过”发送&#x2F;接受消息“两个<strong>原语</strong>进行数据交换。</p>
-<ul>
-<li><p><strong>直接通信</strong>：直接指明要通信的进程ID</p>
-</li>
-<li><p><strong>间接通信</strong>：通过”信箱“</p>
-</li>
-</ul>
-<h3 id="3-管道通信"><a href="#3-管道通信" class="headerlink" title="3. 管道通信"></a>3. 管道通信</h3><p>  <img src="/../typora-user-images/image-20251030225030406.png" alt="image-20251030225030406"></p>
-<ul>
-<li><p>相比共享存储，要求数据读写<strong>先进先出</strong></p>
-</li>
-<li><p>管道数据一旦被读出就<strong>彻底消失</strong></p>
-</li>
-</ul>
-<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p>​     用于通知进程某个时间已经发生</p>
+        <h2 id="系统调用-库函数的区别"><a href="#系统调用-库函数的区别" class="headerlink" title="系统调用&amp;库函数的区别"></a>系统调用&amp;库函数的区别</h2><p>系统调用 比 高级语言库函数 <strong>更底层</strong></p>
+<p><img src="/../typora-user-images/image-20251027102918113.png" alt="image-20251027102918113"></p>
+<h2 id="系统调用必要性"><a href="#系统调用必要性" class="headerlink" title="系统调用必要性"></a>系统调用必要性</h2><p>实现对<strong>共享资源</strong>的互斥访问：操作系统对共享资源统一管理，向上提供”系统调用“</p>
+<p><img src="/../typora-user-images/image-20251027103442403.png" alt="image-20251027103442403"></p>
+<h2 id="系统调用过程"><a href="#系统调用过程" class="headerlink" title="系统调用过程"></a>系统调用过程</h2><p>应用程序——<strong>传参</strong>指令——（用户态）CPU</p>
+<p>应用程序——<strong>陷入</strong>指令——（用户态）CPU内中断</p>
+<p>系统调用入口程序——指令——（核心态）CPU</p>
+<p>系统调用的处理程序——指令——（核心态）CPU</p>
 
       
 
@@ -320,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/30/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.3%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -334,9 +297,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.4OS%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          操作系统-OS体系结构
+        
+      </div>
+    </a>
   
-    <a href="/2025/10/29/java-5-%E9%9B%86%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java-5.集合</div>
+  
+    <a href="/2025/10/26/%E9%9A%8F%E7%AC%94-%E5%9C%B0%E5%9D%9B%EF%BC%8C%E6%88%91%E7%9A%84%E4%B9%8C%E6%89%98%E9%82%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔-地坛，我的乌托邦</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -363,7 +335,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">基本内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">进程的概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">进程的组成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">进程的状态与转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E5%8E%9F%E8%AF%AD"><span class="toc-number">2.2.</span> <span class="toc-text">相关原语</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-number">3.</span> <span class="toc-text">进程通信</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8"><span class="toc-number">3.1.</span> <span class="toc-text">1. 共享存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92"><span class="toc-number">3.2.</span> <span class="toc-text">2. 消息传递</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%AE%A1%E9%81%93%E9%80%9A%E4%BF%A1"><span class="toc-number">3.3.</span> <span class="toc-text">3. 管道通信</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7"><span class="toc-number">4.</span> <span class="toc-text">信号</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8-%E5%BA%93%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">系统调用&amp;库函数的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%BF%85%E8%A6%81%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">系统调用必要性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">系统调用过程</span></a></li></ol>
                     </div>
                 </span>
             </div>
