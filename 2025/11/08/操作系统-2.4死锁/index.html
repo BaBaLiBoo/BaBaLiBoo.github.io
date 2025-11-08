@@ -6,23 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>算法-4.长度最小的子数组 | BaBaLiBoo</title>
+  <title>操作系统-2.4死锁 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="leetcode 209 209.长度最小的子数组给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。 示例：  输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。  提示：  1 &lt;&amp;">
+  <meta name="description" content="1. 概念产生必要条件（同时满足） 互斥 不可剥夺 请求并保持 循环等待（必要不充分）  2.预防 3.⭐避免安全序列 按这个序列给系统分配资源，进程能够顺利完成 不安全状态 找不到任何安全序列，系统进入不安全状态。可能发生死锁 银行家算法（安全性算法） ①资源请求 12345678910111213141516&#x2F;&#x2F; 1. 检查请求是否越界if (Request_i &gt; Need[i]) t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法-4.长度最小的子数组">
-<meta property="og:url" content="http://example.com/2024/09/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/index.html">
+<meta property="og:title" content="操作系统-2.4死锁">
+<meta property="og:url" content="http://example.com/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.4%E6%AD%BB%E9%94%81/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="leetcode 209 209.长度最小的子数组给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。 示例：  输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3] 输出：2 解释：子数组 [4,3] 是该条件下的长度最小的子数组。  提示：  1 &lt;&amp;">
+<meta property="og:description" content="1. 概念产生必要条件（同时满足） 互斥 不可剥夺 请求并保持 循环等待（必要不充分）  2.预防 3.⭐避免安全序列 按这个序列给系统分配资源，进程能够顺利完成 不安全状态 找不到任何安全序列，系统进入不安全状态。可能发生死锁 银行家算法（安全性算法） ①资源请求 12345678910111213141516&#x2F;&#x2F; 1. 检查请求是否越界if (Request_i &gt; Need[i]) t">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251029021924086.png">
-<meta property="article:published_time" content="2024-09-28T18:11:23.000Z">
-<meta property="article:modified_time" content="2025-10-31T12:10:31.035Z">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108235953133.png">
+<meta property="article:published_time" content="2025-11-08T15:34:46.000Z">
+<meta property="article:modified_time" content="2025-11-08T16:48:15.771Z">
 <meta property="article:author" content="BaBaLiBoo">
-<meta property="article:tag" content="数组">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251029021924086.png">
+<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251108235953133.png">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
@@ -182,7 +181,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-算法-4-长度最小的子数组" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-2.4死锁" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -197,13 +196,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      算法-4.长度最小的子数组
+      操作系统-2.4死锁
     </h1>
   
 
         
-        <a href="/2024/09/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2024-09-28T18:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-29</time>
+        <a href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.4%E6%AD%BB%E9%94%81/" class="archive-article-date">
+  	<time datetime="2025-11-08T15:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-08</time>
 </a>
         
       </header>
@@ -211,27 +210,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-size-subarray-sum/">leetcode 209</a></p>
-<h1 id="209-长度最小的子数组"><a href="#209-长度最小的子数组" class="headerlink" title="209.长度最小的子数组"></a>209.长度最小的子数组</h1><p>给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
-<p>示例：</p>
-<ul>
-<li>输入：s &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]</li>
-<li>输出：2</li>
-<li>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</li>
+          <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><h4 id="产生必要条件（同时满足）"><a href="#产生必要条件（同时满足）" class="headerlink" title="产生必要条件（同时满足）"></a>产生必要条件（同时满足）</h4><ul>
+<li>互斥</li>
+<li>不可剥夺</li>
+<li>请求并保持</li>
+<li>循环等待（必要不充分）</li>
 </ul>
-<p>提示：</p>
-<ul>
-<li>1 &lt;&#x3D; target &lt;&#x3D; 10^9</li>
-<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 10^5</li>
-<li>1 &lt;&#x3D; nums[i] &lt;&#x3D; 10^5</li>
-</ul>
-<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><h2 id="💡滑动窗口"><a href="#💡滑动窗口" class="headerlink" title="💡滑动窗口"></a>💡滑动窗口</h2><p><img src="/../typora-user-images/image-20251029021924086.png" alt="image-20251029021924086"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="comment">// 滑动窗口</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minSubArrayLen</span><span class="params">(<span class="type">int</span> target, <span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">            sum += nums[j];</span><br><span class="line">            <span class="keyword">while</span> (sum &gt;= target) &#123;</span><br><span class="line">                result = Math.min(result, j - i + <span class="number">1</span>);</span><br><span class="line">                sum -= nums[i++];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result == Integer.MAX_VALUE ? <span class="number">0</span> : result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-预防"><a href="#2-预防" class="headerlink" title="2.预防"></a>2.预防</h2><p><img src="/../typora-user-images/image-20251108235953133.png" alt="image-20251108235953133"></p>
+<h2 id="3-⭐避免"><a href="#3-⭐避免" class="headerlink" title="3.⭐避免"></a>3.⭐避免</h2><p><strong>安全序列</strong></p>
+<p>按这个序列给系统分配资源，进程能够顺利完成</p>
+<p><strong>不安全状态</strong></p>
+<p>找不到任何安全序列，系统进入不安全状态。可能发生死锁</p>
+<p><strong>银行家算法</strong>（安全性算法）</p>
+<p>①资源请求</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 检查请求是否越界</span></span><br><span class="line"><span class="keyword">if</span> (Request_i &gt; Need[i]) then ERROR</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 检查资源是否足够</span></span><br><span class="line"><span class="keyword">if</span> (Request_i &gt; Available) then WAIT</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 试探性分配</span></span><br><span class="line">Available = Available - Request_i</span><br><span class="line">Allocation[i] = Allocation[i] + Request_i</span><br><span class="line">Need[i] = Need[i] - Request_i</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 检查安全性</span></span><br><span class="line"><span class="keyword">if</span> (IsSafe() == TRUE):</span><br><span class="line">    COMMIT_CHANGES() <span class="comment">// 真正分配</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    ROLLBACK_CHANGES() <span class="comment">// 恢复数据，Pi 等待</span></span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>时间复杂度：O(n)</li>
-<li>空间复杂度：O(1)</li>
-</ul>
+<p>②安全性算法</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function <span class="title function_">IsSafe</span><span class="params">()</span>:</span><br><span class="line">    <span class="comment">// 1. 初始化</span></span><br><span class="line">    Work = Available</span><br><span class="line">    Finish[n] = &#123;<span class="literal">false</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 循环查找可完成的进程</span></span><br><span class="line">    LOOP:</span><br><span class="line">        found = <span class="literal">false</span></span><br><span class="line">        <span class="keyword">for</span> i from <span class="number">0</span> to n<span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">if</span> (Finish[i] == <span class="literal">false</span> AND Need[i] &lt;= Work):</span><br><span class="line">                <span class="comment">// 3. 找到，模拟其执行并释放资源</span></span><br><span class="line">                Work = Work + Allocation[i]</span><br><span class="line">                Finish[i] = <span class="literal">true</span></span><br><span class="line">                found = <span class="literal">true</span></span><br><span class="line">                GOTO LOOP</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// 4. 检查结果</span></span><br><span class="line">    <span class="keyword">if</span> (ALL(Finish) == <span class="literal">true</span>):</span><br><span class="line">        <span class="keyword">return</span> TRUE <span class="comment">// 安全</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> FALSE <span class="comment">// 不安全</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-检测-解除"><a href="#4-检测-解除" class="headerlink" title="4.检测&amp;解除"></a>4.检测&amp;解除</h2><p>允许死锁发生，但需要检测出并解除</p>
+<p>死锁检测算法：依次消除与不阻塞进程相连的边，直到无边可消</p>
+<p>若资源分配图<strong>不可完全简化</strong>，说明发生死锁</p>
 
         
       
@@ -247,11 +246,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		
 		</ul>
@@ -307,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2024/09/29/%E7%AE%97%E6%B3%95-4-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.4%E6%AD%BB%E9%94%81/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -321,18 +316,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2024/09/30/%E7%AE%97%E6%B3%95-5-%E5%8C%BA%E9%97%B4%E5%92%8C/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          算法-5.区间和
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/09/26/%E7%AE%97%E6%B3%95-3-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">算法-3.有序数组的平方</div>
+    <a href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统-2.3同步与互斥</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -359,7 +345,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#209-%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">209.长度最小的子数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%A1%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-number">2.1.</span> <span class="toc-text">💡滑动窗口</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1. 概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A7%E7%94%9F%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6%EF%BC%88%E5%90%8C%E6%97%B6%E6%BB%A1%E8%B6%B3%EF%BC%89"><span class="toc-number">1.0.1.</span> <span class="toc-text">产生必要条件（同时满足）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%84%E9%98%B2"><span class="toc-number">2.</span> <span class="toc-text">2.预防</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E2%AD%90%E9%81%BF%E5%85%8D"><span class="toc-number">3.</span> <span class="toc-text">3.⭐避免</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A3%80%E6%B5%8B-%E8%A7%A3%E9%99%A4"><span class="toc-number">4.</span> <span class="toc-text">4.检测&amp;解除</span></a></li></ol>
                     </div>
                 </span>
             </div>

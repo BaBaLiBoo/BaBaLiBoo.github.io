@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://example.com/typora-user-images/image-20251108222947966.png">
 <meta property="og:image" content="http://example.com/typora-user-images/image-20251108223949775.png">
 <meta property="article:published_time" content="2025-11-08T07:41:34.000Z">
-<meta property="article:modified_time" content="2025-11-08T14:40:08.539Z">
+<meta property="article:modified_time" content="2025-11-08T15:33:42.996Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -74,7 +74,7 @@
 		<!-- 统计信息 -->
 		<div class="header-stats">
 			<div class="stat-item">
-				<span class="stat-number">22</span>
+				<span class="stat-number">23</span>
 				<span class="stat-label">文章</span>
 			</div>
 			<div class="stat-item">
@@ -141,7 +141,7 @@
 			<!-- 统计信息 -->
 			<div class="header-stats">
 				<div class="stat-item">
-					<span class="stat-number">22</span>
+					<span class="stat-number">23</span>
 					<span class="stat-label">文章</span>
 				</div>
 				<div class="stat-item">
@@ -301,8 +301,27 @@
 <p>引入<code>count</code>变量，只有<code>count==0</code>时需要在读之前加锁（既阻塞写进程，又保证后续读操作不被阻塞）</p>
 <p>同时使用<code>mutex</code>来保证对<code>count</code>的互斥访问，防止在判断<code>count</code>时切换导致错误。</p>
 <p><strong>问题：读进程优先级更高，即如果源源不断地有读进程，写进程会“饿死”</strong></p>
+<p>进阶版：</p>
 <p><img src="/../typora-user-images/image-20251108223949775.png" alt="image-20251108223949775"></p>
-<p>增加一个变量<code>w</code>实现读写公平，解决写进程饥饿问题。</p>
+<p>增加一个变量<code>w</code>实现<strong>读写公平</strong>，解决写进程饥饿问题。</p>
+<h4 id="④哲学家进餐问题"><a href="#④哲学家进餐问题" class="headerlink" title="④哲学家进餐问题"></a>④哲学家进餐问题</h4><p>需要避免每个人拿一支筷子陷入”死锁“</p>
+<ul>
+<li>方案1：最多n-1个人能拿筷子</li>
+<li>方案2：奇数号先拿左边，偶数号先拿右边</li>
+<li>方案3：仅当左右2支筷子都能用时才允许拿筷子</li>
+</ul>
+<h2 id="5-管程"><a href="#5-管程" class="headerlink" title="5.管程"></a>5.管程</h2><h4 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h4><p>进程同步工具，保证进程互斥</p>
+<h4 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h4><ul>
+<li>① 名称</li>
+<li>② 管程内部共享数据结构说明</li>
+<li>③ 对<code>②</code>操作的一组过程（函数）</li>
+<li>④ 对<code>②</code>设置初始值的语句</li>
+</ul>
+<blockquote>
+<p>管程像一个类，将共享资源的操作封装起来</p>
+</blockquote>
+<h4 id="管程vs-信号量"><a href="#管程vs-信号量" class="headerlink" title="管程vs.信号量"></a>管程vs.信号量</h4><p>同：都有类似P&#x2F;V操作</p>
+<p>异：管程条件变量没有值，仅有“排队等待”功能；信号量有值</p>
 
         
       
@@ -388,6 +407,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.4%E6%AD%BB%E9%94%81/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          操作系统-2.4死锁
+        
+      </div>
+    </a>
+  
   
     <a href="/2025/11/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.2%E8%B0%83%E5%BA%A6/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">操作系统-2.2CPU调度</div>
@@ -417,7 +445,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.互斥实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.1.</span> <span class="toc-text">①软件实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.2.</span> <span class="toc-text">②硬件实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">3.信号量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E3%80%81%E5%90%8C%E6%AD%A5"><span class="toc-number">3.0.1.</span> <span class="toc-text">实现进程互斥、同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%8F%E5%85%B8%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4.经典同步问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">4.0.1.</span> <span class="toc-text">①生产者-消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85-%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.2.</span> <span class="toc-text">②多生产者-多消费者问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.3.</span> <span class="toc-text">③读者-写者问题</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.互斥实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.1.</span> <span class="toc-text">①软件实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.2.</span> <span class="toc-text">②硬件实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">3.信号量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E3%80%81%E5%90%8C%E6%AD%A5"><span class="toc-number">3.0.1.</span> <span class="toc-text">实现进程互斥、同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%8F%E5%85%B8%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4.经典同步问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">4.0.1.</span> <span class="toc-text">①生产者-消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85-%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.2.</span> <span class="toc-text">②多生产者-多消费者问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.3.</span> <span class="toc-text">③读者-写者问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A3%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.4.</span> <span class="toc-text">④哲学家进餐问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%AE%A1%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">5.管程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">5.0.1.</span> <span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%84%E6%88%90"><span class="toc-number">5.0.2.</span> <span class="toc-text">组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%A8%8Bvs-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">5.0.3.</span> <span class="toc-text">管程vs.信号量</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
