@@ -6,23 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>操作系统-1.6虚拟机 | BaBaLiBoo</title>
+  <title>操作系统-2.3同步与互斥 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="虚拟机分类 直接运行在硬件上（性能高、可迁移性差）    运行在现有的宿主操作系统上（性能略低、可迁移性高）">
+  <meta name="description" content="1. 概念 临界资源：一次仅允许一个进程使用的资源 访问过程：进入区（检查）-临界区（访问）-退出区-剩余区   同步：直接制约关系，源于进程间相互合作 互斥：间接制约关系  2.互斥实现方法①软件实现 一、单标志法   两个进程轮流进入临界区 不足：若一个无法不不再进入，另一个也将无法进入（违背“空闲让进”原则）  二、双标志先检查法   不足：可能同时进入临界区。即检查对方标志后和设置自己标志">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统-1.6虚拟机">
-<meta property="og:url" content="http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.6%E8%99%9A%E6%8B%9F%E6%9C%BA/index.html">
+<meta property="og:title" content="操作系统-2.3同步与互斥">
+<meta property="og:url" content="http://example.com/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="虚拟机分类 直接运行在硬件上（性能高、可迁移性差）    运行在现有的宿主操作系统上（性能略低、可迁移性高）">
+<meta property="og:description" content="1. 概念 临界资源：一次仅允许一个进程使用的资源 访问过程：进入区（检查）-临界区（访问）-退出区-剩余区   同步：直接制约关系，源于进程间相互合作 互斥：间接制约关系  2.互斥实现方法①软件实现 一、单标志法   两个进程轮流进入临界区 不足：若一个无法不不再进入，另一个也将无法进入（违背“空闲让进”原则）  二、双标志先检查法   不足：可能同时进入临界区。即检查对方标志后和设置自己标志">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030174624076.png">
-<meta property="og:image" content="http://example.com/typora-user-images/image-20251030174635399.png">
-<meta property="article:published_time" content="2025-10-27T03:21:31.000Z">
-<meta property="article:modified_time" content="2025-11-08T06:01:15.456Z">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108155931710.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108160225396.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108160636710.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108161251058.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108194444256.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108194714713.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108215103130.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108221921398.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108222947966.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251108223949775.png">
+<meta property="article:published_time" content="2025-11-08T07:41:34.000Z">
+<meta property="article:modified_time" content="2025-11-08T14:40:08.539Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251030174624076.png">
+<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251108155931710.png">
   
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
@@ -182,7 +190,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统-1.6虚拟机" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-2.3同步与互斥" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -197,13 +205,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统-1.6虚拟机
+      操作系统-2.3同步与互斥
     </h1>
   
 
         
-        <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.6%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2025-10-27T03:21:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
+        <a href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" class="archive-article-date">
+  	<time datetime="2025-11-08T07:41:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-08</time>
 </a>
         
       </header>
@@ -211,14 +219,90 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h1 id="虚拟机分类"><a href="#虚拟机分类" class="headerlink" title="虚拟机分类"></a>虚拟机分类</h1><ul>
-<li>直接运行在硬件上（性能高、可迁移性差）</li>
+          <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><ul>
+<li><strong>临界资源</strong>：一次仅允许一个进程使用的资源<ul>
+<li>访问过程：进入区（检查）-临界区（访问）-退出区-剩余区</li>
 </ul>
-<p><img src="/../typora-user-images/image-20251030174624076.png" alt="image-20251030174624076"></p>
+</li>
+<li><strong>同步</strong>：直接制约关系，源于进程间相互合作</li>
+<li><strong>互斥</strong>：间接制约关系</li>
+</ul>
+<h2 id="2-互斥实现方法"><a href="#2-互斥实现方法" class="headerlink" title="2.互斥实现方法"></a>2.互斥实现方法</h2><h4 id="①软件实现"><a href="#①软件实现" class="headerlink" title="①软件实现"></a>①软件实现</h4><ul>
+<li>一、<strong>单标志法</strong></li>
+</ul>
+<p><img src="/../typora-user-images/image-20251108155931710.png" alt="image-20251108155931710"></p>
+<p>两个进程轮流进入临界区</p>
+<p><strong>不足</strong>：若一个无法不不再进入，另一个也将无法进入（违背“空闲让进”原则）</p>
 <ul>
-<li>运行在现有的宿主操作系统上（性能略低、可迁移性高）</li>
+<li>二、<strong>双标志先检查法</strong></li>
 </ul>
-<p><img src="/../typora-user-images/image-20251030174635399.png" alt="image-20251030174635399"></p>
+<p><img src="/../typora-user-images/image-20251108160225396.png" alt="image-20251108160225396"></p>
+<p><strong>不足</strong>：可能同时进入临界区。即检查对方标志后和设置自己标志之前可能发生进程切换（违背“忙则等待”原则）</p>
+<ul>
+<li>三、<strong>双标志后检查法</strong></li>
+</ul>
+<p><img src="/../typora-user-images/image-20251108160636710.png" alt="image-20251108160636710"></p>
+<p><strong>不足</strong>：两个都想进时谁都进不了（违背“空闲让进”、“有限等待”原则）</p>
+<ul>
+<li>四、<strong>Peterson算法</strong>（<strong>四种算法中最好</strong>）</li>
+</ul>
+<p><img src="/../typora-user-images/image-20251108161251058.png" alt="image-20251108161251058"></p>
+<h4 id="②硬件实现"><a href="#②硬件实现" class="headerlink" title="②硬件实现"></a>②硬件实现</h4><ul>
+<li>中断屏蔽方法（最简单，效率降低，不适用多处理系统）</li>
+<li>硬件指令方法——TestAndSet指令（原子操作，适用多处理系统，但违背“让权等待”）</li>
+<li>硬件指令方法——Swap指令</li>
+</ul>
+<h2 id="3-信号量"><a href="#3-信号量" class="headerlink" title="3.信号量"></a>3.信号量</h2><p>一个变量。表示系统中某种资源的数量。</p>
+<ul>
+<li>①<strong>整型信号量</strong></li>
+</ul>
+<p>操作：初始化、wait（P操作：“申请”）、signal（V操作：“释放”）</p>
+<p>缺陷：不满足“让权等待”</p>
+<ul>
+<li><p>⭐②<strong>记录型信号量</strong></p>
+<p>在整型基础上加一个进程链表L</p>
+<p><img src="/../typora-user-images/image-20251108194444256.png" alt="image-20251108194444256"></p>
+<p>value初值表示系统中某种资源的数目。</p>
+<p><img src="/../typora-user-images/image-20251108194714713.png" alt="image-20251108194714713"></p>
+<ul>
+<li>一次P操作（wait）会执行value–，一次V操作（signal）会执行value++</li>
+<li>当value–后剩余资源数**&lt;0<strong>时，主动调用</strong>block<strong>原语进行</strong>自我阻塞**，进程被放入等待队列中</li>
+<li>当value++后剩余资源数依然**&lt;&#x3D;0**，说明还有进程在等待，在V操作后主动执行<strong>wakeup</strong>原语用来<strong>唤醒</strong>等待队列 中对头的进程</li>
+</ul>
+</li>
+</ul>
+<p>​	该机制<strong>遵循“让权等待”</strong></p>
+<h4 id="实现进程互斥、同步"><a href="#实现进程互斥、同步" class="headerlink" title="实现进程互斥、同步"></a>实现进程互斥、同步</h4><ul>
+<li><p>①互斥</p>
+<p>初始化互斥信号量为1</p>
+<p>临界区之前对信号量执行P操作</p>
+<p>临界区之后对信号量执行V操作</p>
+<ul>
+<li>P、V成对出现</li>
+</ul>
+</li>
+<li><p>②同步</p>
+<p>初始化信号量为0</p>
+<p>判断先后顺序（例x、y）</p>
+<p>x之后执行V</p>
+<p>y之前执行P</p>
+</li>
+</ul>
+<h2 id="4-经典同步问题"><a href="#4-经典同步问题" class="headerlink" title="4.经典同步问题"></a>4.经典同步问题</h2><h4 id="①生产者-消费者"><a href="#①生产者-消费者" class="headerlink" title="①生产者-消费者"></a>①生产者-消费者<img src="/../typora-user-images/image-20251108215103130.png" alt="image-20251108215103130"></h4><p><strong>思考：为什么不能交换相邻P操作（empty和mutex）？</strong></p>
+<p>如果mutex在前，mutex变为0，若此时缓冲区无空位（empty&#x3D;0,full&#x3D;n)，生产者被阻塞。然而消费者执行时由于mutex&#x3D;0也被阻塞，无法释放缓冲区，出现死锁。</p>
+<p>∴ <strong>互斥的P操作一定在同步的P操作之后</strong></p>
+<p>但V操作可以颠倒，因为不会导致阻塞</p>
+<h4 id="②多生产者-多消费者问题"><a href="#②多生产者-多消费者问题" class="headerlink" title="②多生产者-多消费者问题"></a>②多生产者-多消费者问题</h4><p><img src="/../typora-user-images/image-20251108221921398.png" alt="image-20251108221921398"></p>
+<p><strong>思考：可不可以删掉互斥信号mutex？</strong></p>
+<p>在本题中删掉是可以的。因为<strong>缓冲区大小&#x3D;1</strong>，最多只允许一个进程访问。</p>
+<p>但如果<strong>缓冲区大小&gt;1</strong>则必须专门设置mutex来保证互斥访问！</p>
+<h4 id="③读者-写者问题"><a href="#③读者-写者问题" class="headerlink" title="③读者-写者问题"></a>③读者-写者问题</h4><p>互斥：写—写、读—写（读—读可以同时）</p>
+<p><img src="/../typora-user-images/image-20251108222947966.png" alt="image-20251108222947966"></p>
+<p>引入<code>count</code>变量，只有<code>count==0</code>时需要在读之前加锁（既阻塞写进程，又保证后续读操作不被阻塞）</p>
+<p>同时使用<code>mutex</code>来保证对<code>count</code>的互斥访问，防止在判断<code>count</code>时切换导致错误。</p>
+<p><strong>问题：读进程优先级更高，即如果源源不断地有读进程，写进程会“饿死”</strong></p>
+<p><img src="/../typora-user-images/image-20251108223949775.png" alt="image-20251108223949775"></p>
+<p>增加一个变量<code>w</code>实现读写公平，解决写进程饥饿问题。</p>
 
         
       
@@ -290,7 +374,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.6%E8%99%9A%E6%8B%9F%E6%9C%BA/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +388,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          系统结构-1.基本概念
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/10/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1.4OS%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">操作系统-1.4OS体系结构</div>
+    <a href="/2025/11/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.2%E8%B0%83%E5%BA%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统-2.2CPU调度</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -342,7 +417,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">虚拟机分类</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BA%92%E6%96%A5%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.互斥实现方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.1.</span> <span class="toc-text">①软件实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%A1%AC%E4%BB%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.0.2.</span> <span class="toc-text">②硬件实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">3.信号量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5%E3%80%81%E5%90%8C%E6%AD%A5"><span class="toc-number">3.0.1.</span> <span class="toc-text">实现进程互斥、同步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%8F%E5%85%B8%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">4.经典同步问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85"><span class="toc-number">4.0.1.</span> <span class="toc-text">①生产者-消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E5%A4%9A%E7%94%9F%E4%BA%A7%E8%80%85-%E5%A4%9A%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.2.</span> <span class="toc-text">②多生产者-多消费者问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.3.</span> <span class="toc-text">③读者-写者问题</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
