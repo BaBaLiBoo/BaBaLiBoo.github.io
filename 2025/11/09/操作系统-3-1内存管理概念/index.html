@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://example.com/typora-user-images/image-20251109153040919.png">
 <meta property="og:image" content="http://example.com/typora-user-images/image-20251109164904545.png">
 <meta property="article:published_time" content="2025-11-09T02:09:10.000Z">
-<meta property="article:modified_time" content="2025-11-09T08:57:48.365Z">
+<meta property="article:modified_time" content="2025-11-09T09:17:27.504Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -273,7 +273,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-连续分配管理方式"><a href="#2-连续分配管理方式" class="headerlink" title="2.连续分配管理方式"></a>2.连续分配管理方式</h2><h4 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h4><p>内存（低→高）：系统区、用户区</p>
+<h2 id="2-连续分配"><a href="#2-连续分配" class="headerlink" title="2.连续分配"></a>2.连续分配</h2><h4 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h4><p>内存（低→高）：系统区、用户区</p>
 <ul>
 <li>只有一道用户程序</li>
 <li>无外部碎片</li>
@@ -297,7 +297,7 @@
 <p>从上次查找结束的地方开始查找，仍然按顺序排列</p>
 </li>
 </ul>
-<h2 id="3-分页存储管理"><a href="#3-分页存储管理" class="headerlink" title="3.分页存储管理"></a>3.分页存储管理</h2><ul>
+<h2 id="3-分页"><a href="#3-分页" class="headerlink" title="3.分页"></a>3.分页</h2><ul>
 <li>将内存分为一个个大小相等的分区——“页框”</li>
 </ul>
 <blockquote>
@@ -344,12 +344,34 @@
 <p>①逻辑地址的页目录号→页目录索引→对应页表初始值</p>
 <p>②二级页号→页表分页的索引→对应页表项</p>
 <p>③页表项中 <em>物理块号+页内偏移</em> 拼接→物理地址→访问内存单元</p>
-<h2 id="4-基本分段存储管理"><a href="#4-基本分段存储管理" class="headerlink" title="4.基本分段存储管理"></a>4.基本分段存储管理</h2><h4 id="分段"><a href="#分段" class="headerlink" title="分段"></a>分段</h4><p>将进程按照<strong>自身逻辑关系</strong>划分为若干段</p>
+<h2 id="4-分段"><a href="#4-分段" class="headerlink" title="4.分段"></a>4.分段</h2><p>将进程按照<strong>自身逻辑关系</strong>划分为若干段</p>
 <blockquote>
 <p> 分段系统逻辑地址&#x3D;段号+段内地址</p>
 </blockquote>
-<h4 id="段表"><a href="#段表" class="headerlink" title="段表"></a>段表</h4><p> 每个进程有一个段表（每一行：段号+段长+基址）</p>
+<h4 id="段表"><a href="#段表" class="headerlink" title="段表"></a>段表</h4><p> 每个进程有一个段表（每一行：段号+⭐<strong>段长</strong>+基址）</p>
 <p><img src="/../typora-user-images/image-20251109164904545.png" alt="image-20251109164904545"></p>
+<ul>
+<li>需要检查段号是否越界、<strong>段内地址是否超过段长</strong>（和分页地址变换的最大区别）</li>
+</ul>
+<h4 id="分页vs-分段"><a href="#分页vs-分段" class="headerlink" title="分页vs.分段"></a>分页vs.分段</h4><p>①</p>
+<ul>
+<li><strong>页</strong>是<strong>物理单位</strong>。用户不可见</li>
+<li><strong>段</strong>是<strong>逻辑单位</strong>。用户可见</li>
+</ul>
+<p>②</p>
+<ul>
+<li><strong>页</strong>大小<strong>固定</strong></li>
+<li><strong>段</strong>大小<strong>不固定</strong></li>
+</ul>
+<p>③</p>
+<ul>
+<li><strong>分页</strong>的用户进程地址空间是<strong>一维</strong>（直接给一个数，即逻辑地址）</li>
+<li><strong>分段</strong>的用户进程地址空间是<strong>二维</strong>（段号、段内地址两个数）</li>
+</ul>
+<h2 id="5-段页式"><a href="#5-段页式" class="headerlink" title="5.段页式"></a>5.段页式</h2><h4 id="逻辑地址结构"><a href="#逻辑地址结构" class="headerlink" title="逻辑地址结构"></a>逻辑地址结构</h4><p><strong>段号+页号+页内偏移量</strong></p>
+<ul>
+<li>二维：用户只给出段号+段内地址，“分页”对用户<strong>不可见</strong></li>
+</ul>
 
         
       
@@ -464,7 +486,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">1. 原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5-%E8%A3%85%E5%85%A5"><span class="toc-number">1.0.1.</span> <span class="toc-text">程序的链接&amp;装入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E6%98%A0%E5%83%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text">进程的内存映像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%BF%9D%E6%8A%A4"><span class="toc-number">1.0.3.</span> <span class="toc-text">内存保护</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2.连续分配管理方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-number">2.0.1.</span> <span class="toc-text">单一连续分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-number">2.0.2.</span> <span class="toc-text">固定分区分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-number">2.0.3.</span> <span class="toc-text">动态分区分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-number">2.0.4.</span> <span class="toc-text">动态分区分配算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%86%E9%A1%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">3.分页存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84"><span class="toc-number">3.0.1.</span> <span class="toc-text">基本地址变换机构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E5%BF%AB%E8%A1%A8%E7%9A%84%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84"><span class="toc-number">3.0.2.</span> <span class="toc-text">具有快表的地址变换机构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%BA%A7%E9%A1%B5%E8%A1%A8"><span class="toc-number">3.0.3.</span> <span class="toc-text">两级页表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9F%BA%E6%9C%AC%E5%88%86%E6%AE%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">4.基本分段存储管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5"><span class="toc-number">4.0.1.</span> <span class="toc-text">分段</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E8%A1%A8"><span class="toc-number">4.0.2.</span> <span class="toc-text">段表</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">1. 原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5-%E8%A3%85%E5%85%A5"><span class="toc-number">1.0.1.</span> <span class="toc-text">程序的链接&amp;装入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%86%85%E5%AD%98%E6%98%A0%E5%83%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text">进程的内存映像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E4%BF%9D%E6%8A%A4"><span class="toc-number">1.0.3.</span> <span class="toc-text">内存保护</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-number">2.</span> <span class="toc-text">2.连续分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-number">2.0.1.</span> <span class="toc-text">单一连续分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-number">2.0.2.</span> <span class="toc-text">固定分区分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-number">2.0.3.</span> <span class="toc-text">动态分区分配</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-number">2.0.4.</span> <span class="toc-text">动态分区分配算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%86%E9%A1%B5"><span class="toc-number">3.</span> <span class="toc-text">3.分页</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84"><span class="toc-number">3.0.1.</span> <span class="toc-text">基本地址变换机构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E5%BF%AB%E8%A1%A8%E7%9A%84%E5%9C%B0%E5%9D%80%E5%8F%98%E6%8D%A2%E6%9C%BA%E6%9E%84"><span class="toc-number">3.0.2.</span> <span class="toc-text">具有快表的地址变换机构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%BA%A7%E9%A1%B5%E8%A1%A8"><span class="toc-number">3.0.3.</span> <span class="toc-text">两级页表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E6%AE%B5"><span class="toc-number">4.</span> <span class="toc-text">4.分段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AE%B5%E8%A1%A8"><span class="toc-number">4.0.1.</span> <span class="toc-text">段表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E9%A1%B5vs-%E5%88%86%E6%AE%B5"><span class="toc-number">4.0.2.</span> <span class="toc-text">分页vs.分段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%AE%B5%E9%A1%B5%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">5.段页式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9C%B0%E5%9D%80%E7%BB%93%E6%9E%84"><span class="toc-number">5.0.1.</span> <span class="toc-text">逻辑地址结构</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -667,11 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计网</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
             
             <div class="clearfix"></div>
