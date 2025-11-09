@@ -22,6 +22,19 @@
 <meta property="article:tag" content="后端">
 <meta name="twitter:card" content="summary">
   
+    
+    <!-- Open Graph 标签 - 用于微信分享 -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://example.com/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&amp;%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">
+    <meta property="og:title" content="java-3.反射&amp;动态代理">
+    
+    <meta property="og:description" content="花有重开日，人无再少年">
+    
+    <meta property="og:site_name" content="BaBaLiBoo">
+    <!-- 微信分享 - 不设置图片，显示为链接卡片 -->
+    <meta property="weixin:card" content="summary">
+  
+  
     <link rel="alternative" href="/atom.xml" title="BaBaLiBoo" type="application/atom+xml">
   
   
@@ -341,11 +354,122 @@
 
 <div class="page-modal wx-share js-wx-box">
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" alt="微信分享二维码">
+    <div class="wx-share-content">
+      <p style="font-size: 16px; font-weight: bold; margin-bottom: 15px; text-align: center;">分享到微信</p>
+      <div class="wx-share-link-card">
+        
+        <div class="wx-share-info">
+          <h3 class="wx-share-title">java-3.反射&amp;动态代理</h3>
+          <div class="wx-share-url">
+            <input type="text" readonly value="http://example.com/2025/10/25/java-3.%E5%8F%8D%E5%B0%84&amp;%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" id="wx-share-url-input">
+            <button onclick="copyShareUrl()" class="wx-copy-btn">复制链接</button>
+          </div>
+          <p style="font-size: 12px; color: #999; margin-top: 15px; text-align: center;">
+            复制链接后，在微信中打开即可分享<br>
+            分享时会显示文章标题和链接
+          </p>
+        </div>
+      </div>
     </div>
 </div>
+<script>
+function copyShareUrl() {
+  var input = document.getElementById('wx-share-url-input');
+  if (input) {
+    input.select();
+    input.setSelectionRange(0, 99999); // 兼容移动设备
+    try {
+      document.execCommand('copy');
+      var btn = document.querySelector('.wx-copy-btn');
+      if (btn) {
+        var originalText = btn.textContent;
+        btn.textContent = '已复制！';
+        btn.style.backgroundColor = '#4CAF50';
+        setTimeout(function() {
+          btn.textContent = originalText;
+          btn.style.backgroundColor = '';
+        }, 2000);
+      }
+    } catch (err) {
+      alert('复制失败，请手动复制');
+    }
+  }
+}
+</script>
+<style>
+.wx-share-content {
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.wx-share-link-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.wx-share-info {
+  padding: 20px;
+}
+
+.wx-share-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.wx-share-url {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.wx-share-url input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #666;
+  background: #f9f9f9;
+}
+
+.wx-copy-btn {
+  padding: 8px 16px;
+  background: #07c160;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s;
+}
+
+.wx-copy-btn:hover {
+  background: #06ad56;
+}
+
+@media screen and (max-width: 768px) {
+  .wx-share-content {
+    padding: 15px;
+  }
+  
+  .wx-share-url {
+    flex-direction: column;
+  }
+  
+  .wx-copy-btn {
+    width: 100%;
+  }
+}
+</style>
 
 <div class="mask js-mask"></div>
       
@@ -598,11 +722,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计网</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
