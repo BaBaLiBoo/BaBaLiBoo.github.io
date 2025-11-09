@@ -320,7 +320,7 @@
         <div class="wx-share-info">
           <h3 class="wx-share-title">操作系统-2.4死锁</h3>
           <div class="wx-share-url">
-            <input type="text" readonly value="http://example.com/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.4%E6%AD%BB%E9%94%81/" id="wx-share-url-input">
+            <input type="text" readonly value="" id="wx-share-url-input">
             <button onclick="copyShareUrl()" class="wx-copy-btn">复制链接</button>
           </div>
           <p style="font-size: 12px; color: #999; margin-top: 15px; text-align: center;">
@@ -332,9 +332,51 @@
     </div>
 </div>
 <script>
+(function() {
+  // 获取当前页面的真实 URL
+  function getCurrentPageUrl() {
+    var url = window.location.href;
+    // 移除末尾的 index.html（如果有）
+    url = url.replace(/index\.html$/, '');
+    // 移除末尾的斜杠
+    url = url.replace(/\/$/, '');
+    return url;
+  }
+  
+  // 页面加载时设置 URL
+  function setShareUrl() {
+    var input = document.getElementById('wx-share-url-input');
+    if (input) {
+      input.value = getCurrentPageUrl();
+    }
+  }
+  
+  // 弹窗显示时设置 URL
+  var wxBox = document.querySelector('.js-wx-box');
+  if (wxBox) {
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          if (wxBox.classList.contains('in') && wxBox.classList.contains('ready')) {
+            setShareUrl();
+          }
+        }
+      });
+    });
+    observer.observe(wxBox, { attributes: true });
+  }
+  
+  // 立即设置一次
+  setShareUrl();
+})();
+
 function copyShareUrl() {
   var input = document.getElementById('wx-share-url-input');
   if (input) {
+    // 确保 URL 是最新的
+    var url = window.location.href.replace(/index\.html$/, '').replace(/\/$/, '');
+    input.value = url;
+    
     input.select();
     input.setSelectionRange(0, 99999); // 兼容移动设备
     try {
@@ -681,11 +723,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计网</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
             
             <div class="clearfix"></div>
