@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>系统结构-2.指令系统 | BaBaLiBoo</title>
+  <title>系统结构-2.1指令系统基础 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数必须来">
+  <meta name="description" content="1. 指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="系统结构-2.指令系统">
-<meta property="og:url" content="http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="系统结构-2.1指令系统基础">
+<meta property="og:url" content="http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数必须来">
+<meta property="og:description" content="1. 指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/typora-user-images/image-20251027234033760.png">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251110144458277.png">
 <meta property="article:published_time" content="2025-10-27T15:27:54.000Z">
-<meta property="article:modified_time" content="2025-10-28T00:39:43.537Z">
+<meta property="article:modified_time" content="2025-11-10T06:56:04.467Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="系统结构">
 <meta name="twitter:card" content="summary">
@@ -26,8 +27,8 @@
     
     <!-- Open Graph 标签 - 用于微信分享 -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">
-    <meta property="og:title" content="系统结构-2.指令系统">
+    <meta property="og:url" content="http://example.com/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">
+    <meta property="og:title" content="系统结构-2.1指令系统基础">
     
     <meta property="og:description" content="花有重开日，人无再少年">
     
@@ -78,7 +79,7 @@
 		<!-- 统计信息 -->
 		<div class="header-stats">
 			<div class="stat-item">
-				<span class="stat-number">25</span>
+				<span class="stat-number">26</span>
 				<span class="stat-label">文章</span>
 			</div>
 			<div class="stat-item">
@@ -145,7 +146,7 @@
 			<!-- 统计信息 -->
 			<div class="header-stats">
 				<div class="stat-item">
-					<span class="stat-number">25</span>
+					<span class="stat-number">26</span>
 					<span class="stat-label">文章</span>
 				</div>
 				<div class="stat-item">
@@ -194,7 +195,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-系统结构-2-指令系统" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-系统结构-2.1指令系统基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -209,12 +210,12 @@
         
   
     <h1 class="article-title" itemprop="name">
-      系统结构-2.指令系统
+      系统结构-2.1指令系统基础
     </h1>
   
 
         
-        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
+        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
   	<time datetime="2025-10-27T15:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
 </a>
         
@@ -223,7 +224,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h2 id="指令系统的分类"><a href="#指令系统的分类" class="headerlink" title="指令系统的分类"></a>指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
+          <h2 id="1-指令系统的分类"><a href="#1-指令系统的分类" class="headerlink" title="1. 指令系统的分类"></a>1. 指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
 <p>以<code>C=A+B</code>为例说明不同指令系统的特性</p>
 <ul>
 <li><strong>堆栈型</strong></li>
@@ -253,16 +254,19 @@
 <p>​    <code>Add R3, R1, B</code> (<code>R1</code> + 内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>) </p>
 <p>​    <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
 <ul>
-<li><strong>寄存器-寄存器型</strong></li>
+<li><p><strong>寄存器-寄存器型</strong></p>
+<p>⭐RISC核心：<strong>快慢分离</strong>。ALU只做快速计算；内存只负责慢速访问</p>
+</li>
 </ul>
-<p>ALU<strong>绝对不能</strong>直接访问内存。所有操作数必须先从内存 <code>Load</code>到寄存器中</p>
+<p>ALU<strong>不能</strong>直接访问内存。所有操作数必须先从内存 <code>Load</code>到寄存器中</p>
 <p>代码：</p>
 <p>​    <code>Load R1, A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R1</code>) </p>
 <p>​    <code>Load R2, B</code> (内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R2</code>) </p>
 <p>​    <code>Add R3, R1, R2</code> (寄存器 <code>R1</code> + 寄存器 <code>R2</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>)     <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
 </li>
 </ul>
-<h2 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h2><h2 id="寻址技术"><a href="#寻址技术" class="headerlink" title="寻址技术"></a>寻址技术</h2><h2 id="指令格式的优化设计"><a href="#指令格式的优化设计" class="headerlink" title="指令格式的优化设计"></a>指令格式的优化设计</h2><h2 id="指令系统的功能设计"><a href="#指令系统的功能设计" class="headerlink" title="指令系统的功能设计"></a>指令系统的功能设计</h2><h2 id="综合实例：-MIPS-指令集"><a href="#综合实例：-MIPS-指令集" class="headerlink" title="综合实例： MIPS 指令集"></a>综合实例： MIPS 指令集</h2>
+<h2 id="2-寻址方式"><a href="#2-寻址方式" class="headerlink" title="2.寻址方式"></a>2.寻址方式</h2><p><img src="/../typora-user-images/image-20251110144458277.png" alt="image-20251110144458277"></p>
+
         
       
 
@@ -336,7 +340,7 @@
       <div class="wx-share-link-card">
         
         <div class="wx-share-info">
-          <h3 class="wx-share-title">系统结构-2.指令系统</h3>
+          <h3 class="wx-share-title">系统结构-2.1指令系统基础</h3>
           <div class="wx-share-url">
             <input type="text" readonly value="" id="wx-share-url-input">
             <button onclick="copyShareUrl()" class="wx-copy-btn">复制链接</button>
@@ -538,7 +542,7 @@ function copyShareUrl() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">指令系统的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA"><span class="toc-number">2.</span> <span class="toc-text">数据表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%E6%8A%80%E6%9C%AF"><span class="toc-number">3.</span> <span class="toc-text">寻址技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BC%98%E5%8C%96%E8%AE%BE%E8%AE%A1"><span class="toc-number">4.</span> <span class="toc-text">指令格式的优化设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.</span> <span class="toc-text">指令系统的功能设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%AE%9E%E4%BE%8B%EF%BC%9A-MIPS-%E6%8C%87%E4%BB%A4%E9%9B%86"><span class="toc-number">6.</span> <span class="toc-text">综合实例： MIPS 指令集</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">1. 指令系统的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2.寻址方式</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -737,15 +741,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">计网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">系统结构</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
             
             <div class="clearfix"></div>
