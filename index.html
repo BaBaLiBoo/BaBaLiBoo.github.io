@@ -181,7 +181,7 @@
 
   
   
-    <article id="post-系统结构-2-2指令系统的设计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-系统结构-3流水线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -189,13 +189,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2025/11/10/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">系统结构-2.2指令系统的设计</a>
+      <a class="article-title" href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/">系统结构-3流水线</a>
     </h1>
   
 
         
-        <a href="/2025/11/10/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/" class="archive-article-date">
-  	<time datetime="2025-11-10T06:55:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-10</time>
+        <a href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/" class="archive-article-date">
+  	<time datetime="2025-11-12T09:23:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-12</time>
 </a>
         
       </header>
@@ -204,11 +204,15 @@
       
         
           
-          <h2 id="控制指令"><a href="#控制指令" class="headerlink" title="控制指令"></a>控制指令</h2><p>①跳转指令：无条件改变控制流</p>
-<p>②分支指令：有条件改变控制流</p>
-<p>改变控制流大多是<strong>分支指令</strong>（条件跳转）</p>
+          <h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><h4 id="①吞吐率：单位时间内完成的任务数"><a href="#①吞吐率：单位时间内完成的任务数" class="headerlink" title="①吞吐率：单位时间内完成的任务数"></a>①<strong>吞吐率</strong>：单位时间内完成的任务数</h4><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>P</mi><mo>=</mo><mfrac><mi>n</mi><msub><mi>T</mi><mi>k</mi></msub></mfrac></mrow><annotation encoding="application/x-tex">TP=\frac{n}{T_k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">TP</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1463em;vertical-align:-0.4509em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6954em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3488em;margin-left:-0.1389em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1512em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4509em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>
+
+<ul>
+<li><p>每段时间相等（n个任务，每个k段）</p>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mtext>总</mtext></msub><mo>=</mo><mi>k</mi><mi mathvariant="normal">Δ</mi><mi>t</mi><mo>+</mo><mo stretchy="false">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo><mi mathvariant="normal">Δ</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">T_总=k \Delta t+(n-1)\Delta t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.1389em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord cjk_fallback mtight">总</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord">Δ</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mord">Δ</span><span class="mord mathnormal">t</span></span></span></span></li>
+</ul>
+<p><img src="/../typora-user-images/image-20251112192426971.png" alt="image-20251112192426971"></p>
           
-            <a class="article-more-a" href="/2025/11/10/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/#more">more >></a>
+            <a class="article-more-a" href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/#more">more >></a>
           
         
       
@@ -234,7 +238,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2025/11/10/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/">展开全文 >></a>
         </p>
       
 
@@ -990,7 +994,7 @@
 
 
   
-    <article id="post-系统结构-2.1指令系统基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-系统结构-2指令系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -998,12 +1002,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">系统结构-2.1指令系统基础</a>
+      <a class="article-title" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">系统结构-2指令系统</a>
     </h1>
   
 
         
-        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+        <a href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
   	<time datetime="2025-10-27T15:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-10-27</time>
 </a>
         
@@ -1016,7 +1020,7 @@
           <h2 id="1-指令系统的分类"><a href="#1-指令系统的分类" class="headerlink" title="1. 指令系统的分类"></a>1. 指令系统的分类</h2><p><img src="/../typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
 <p>以<code>C=A+B</code>为例说明不同指令系统的特性</p>
           
-            <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/#more">more >></a>
+            <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/#more">more >></a>
           
         
       
@@ -1042,7 +1046,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2.1%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+          <a class="article-more-a" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
         </p>
       
 
@@ -1183,11 +1187,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计网</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统结构</a>
+                <a href="javascript:void(0)" class="js-tag color3">计网</a>
               </li>
              
               <li class="article-tag-list-item">
