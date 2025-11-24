@@ -6,26 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>操作系统-2.2CPU调度 | BaBaLiBoo</title>
+  <title>操作系统-Unix V6++ | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 概念CPU调度就是对CPU进行分配。从就绪队列中按照一定算法选择一个进程将CPU分配给它运行。 CPU三级调度  高级（作业调度）：从外存后备队列中调选作业分配内存，使之可以竞争CPU 中级（内存调度）：提高内存利用率，将不能运行的进程调至外存 低级（进程调度）：最基本，给就绪队列中的进程分配CPU  2.实现调度程序由三部分组成  排队器 分派器 上下文切换器  不能进行调度&amp;切换">
+  <meta name="description" content="Unix V6++系统">
 <meta property="og:type" content="article">
-<meta property="og:title" content="操作系统-2.2CPU调度">
-<meta property="og:url" content="http://example.com/2025/11/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.2%E8%B0%83%E5%BA%A6/index.html">
+<meta property="og:title" content="操作系统-Unix V6++">
+<meta property="og:url" content="http://example.com/2025/11/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-0%E7%BB%AA%E8%AE%BA/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
-<meta property="og:description" content="1. 概念CPU调度就是对CPU进行分配。从就绪队列中按照一定算法选择一个进程将CPU分配给它运行。 CPU三级调度  高级（作业调度）：从外存后备队列中调选作业分配内存，使之可以竞争CPU 中级（内存调度）：提高内存利用率，将不能运行的进程调至外存 低级（进程调度）：最基本，给就绪队列中的进程分配CPU  2.实现调度程序由三部分组成  排队器 分派器 上下文切换器  不能进行调度&amp;切换">
+<meta property="og:description" content="Unix V6++系统">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-06T11:27:05.000Z">
-<meta property="article:modified_time" content="2025-11-08T07:41:10.323Z">
+<meta property="og:image" content="http://example.com/typora-user-images/image-20251123120836529.png">
+<meta property="og:image" content="http://example.com/typora-user-images/11778bc9b67fb55b1a95698d658c1c63.jpg">
+<meta property="og:image" content="http://example.com/typora-user-images/c797856a280cf8e253e9a426ae65c158.jpg">
+<meta property="article:published_time" content="2025-11-24T03:18:10.000Z">
+<meta property="article:modified_time" content="2025-11-24T17:21:05.269Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/typora-user-images/image-20251123120836529.png">
   
     
     <!-- Open Graph 标签 - 用于微信分享 -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://example.com/2025/11/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.2%E8%B0%83%E5%BA%A6/">
-    <meta property="og:title" content="操作系统-2.2CPU调度">
+    <meta property="og:url" content="http://example.com/2025/11/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-0%E7%BB%AA%E8%AE%BA/">
+    <meta property="og:title" content="操作系统-Unix V6++">
     
     <meta property="og:description" content="花有重开日，人无再少年">
     
@@ -192,7 +196,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统-2.2调度" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-0绪论" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -207,13 +211,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      操作系统-2.2CPU调度
+      操作系统-Unix V6++
     </h1>
   
 
         
-        <a href="/2025/11/06/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.2%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2025-11-06T11:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-06</time>
+        <a href="/2025/11/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-0%E7%BB%AA%E8%AE%BA/" class="archive-article-date">
+  	<time datetime="2025-11-24T03:18:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-24</time>
 </a>
         
       </header>
@@ -221,95 +225,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          <h2 id="1-概念"><a href="#1-概念" class="headerlink" title="1. 概念"></a>1. 概念</h2><p>CPU调度就是对CPU进行<strong>分配</strong>。从就绪队列中按照一定算法选择一个进程将CPU分配给它运行。</p>
-<p><strong>CPU三级调度</strong></p>
-<ul>
-<li>高级（作业调度）：从<strong>外存后备队列</strong>中调选<strong>作业</strong>分配<strong>内存</strong>，使之可以竞争CPU</li>
-<li>中级（内存调度）：提高内存利用率，将<strong>不能运行的进程</strong>调至<strong>外存</strong></li>
-<li>低级（进程调度）：最基本，给就绪队列中的<strong>进程</strong>分配CPU</li>
-</ul>
-<h2 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h2><p><strong>调度程序</strong>由三部分组成</p>
-<ul>
-<li>排队器</li>
-<li>分派器</li>
-<li>上下文切换器</li>
-</ul>
-<p>不能进行调度&amp;切换的情况</p>
-<ul>
-<li>处理中断过程中</li>
-<li>原子操作过程中（连中断都屏蔽）</li>
-</ul>
-<p><strong>进程调度方式</strong></p>
-<ul>
-<li>非抢占调度</li>
-<li>抢占调度（允许更紧迫的插队）</li>
-</ul>
-<p><strong>常用计算</strong></p>
-<ul>
-<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>周转时间</mtext><mo>=</mo><mtext>作业完成时间</mtext><mo>−</mo><mtext>提交时间</mtext></mrow><annotation encoding="application/x-tex">周转时间= 作业完成时间-提交时间</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">周转时间</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">作业完成时间</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">提交时间</span></span></span></span></span>
-</li>
-<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>平均周转时间</mtext><mo>=</mo><mtext>（周转时间</mtext><mn>1</mn><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mtext>周转时间</mtext><mi>n</mi><mo stretchy="false">)</mo><mi mathvariant="normal">/</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">平均周转时间= （周转时间1+...+周转时间n)/n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">平均周转时间</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord cjk_fallback">（周转时间</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">...</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">周转时间</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mord">/</span><span class="mord mathnormal">n</span></span></span></span></span></li>
-<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>带权周转时间</mtext><mo>=</mo><mfrac><mtext>作业周转时间</mtext><mtext>作业实际运行时间</mtext></mfrac></mrow><annotation encoding="application/x-tex">带权周转时间=\frac{作业周转时间}{作业实际运行时间}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord cjk_fallback">带权周转时间</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">作业实际运行时间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">作业周转时间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
-<li><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mtext>利用率</mtext><mo>=</mo><mfrac><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mtext>有效工作时间</mtext></mrow><mrow><mi>C</mi><mi>P</mi><mi>U</mi><mtext>有效工作时间</mtext><mo>+</mo><mi>C</mi><mi>P</mi><mi>U</mi><mtext>空闲等待时间作</mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">CPU利用率=\frac{CPU有效工作时间}{CPU有效工作时间+CPU空闲等待时间作}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">利用率</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.1297em;vertical-align:-0.7693em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">有效工作时间</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">空闲等待时间作</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">CP</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord cjk_fallback">有效工作时间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7693em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
-</ul>
-<h2 id="3-进程切换"><a href="#3-进程切换" class="headerlink" title="3.进程切换"></a>3.进程切换</h2><h4 id="上下文切换"><a href="#上下文切换" class="headerlink" title="上下文切换"></a>上下文切换</h4><p>用<strong>PCB</strong>表示（CPU寄存器的值+进程状态等）</p>
-<blockquote>
-<p>先有资源调度（决策），再有进程切换（执行）</p>
-</blockquote>
-<h4 id="上下文切换-模式切换"><a href="#上下文切换-模式切换" class="headerlink" title="上下文切换&amp;模式切换"></a>上下文切换&amp;模式切换</h4><ul>
-<li>上下文：切换进程，昂贵，内核态</li>
-<li>模式：同一个进程，用户态、内核态切换</li>
-</ul>
-<h2 id="4-调度算法"><a href="#4-调度算法" class="headerlink" title="4.调度算法"></a>4.调度算法</h2><ol>
-<li><p><strong>先来先服务 FCFS</strong></p>
-</li>
-<li><p><strong>短作业优先 SJF</strong></p>
-<ul>
-<li>平均等待时间、平均周转时间最优</li>
-</ul>
-</li>
-<li><p><strong>高响应比优先</strong></p>
-<ul>
-<li><p>响应比<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>R</mi><mi>p</mi></msub><mo>=</mo><mfrac><mrow><mtext>等待时间</mtext><mo>+</mo><mtext>要求服务时间</mtext></mrow><mtext>要求服务时间</mtext></mfrac></mrow><annotation encoding="application/x-tex">R_p = \frac{等待时间+要求服务时间}{要求服务时间}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0077em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">要求服务时间</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord cjk_fallback">等待时间</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord cjk_fallback">要求服务时间</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>​</p>
-<ul>
-<li>等待时间：截止目前每个进程已经排队的时长</li>
-</ul>
-</li>
-<li><p>相比SIF算法克服了饥饿现象</p>
-</li>
-</ul>
-</li>
-<li><p><strong>优先级</strong></p>
-<ul>
-<li>一般优先级原则<ul>
-<li>系统进程&gt;用户进程</li>
-<li>交互型&gt;非交互性</li>
-<li>I&#x2F;O型&gt;计算型</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>时间片轮转 RR</strong></p>
-<ul>
-<li>按<strong>FCFS</strong>原则排好就绪队列，设定<strong>时间片</strong>大小</li>
-<li>给队首进程分配时间片</li>
-<li>执行一个时间片后，产生一个<strong>时钟中断</strong>，无论完成与否<strong>必须释放时间片</strong></li>
-<li>被剥夺的进程返回队尾重新排队</li>
-</ul>
-</li>
-<li><p><strong>多级队列</strong></p>
-<ul>
-<li>适用于多CPU系统</li>
-</ul>
-</li>
-<li><p><strong>多级反馈队列</strong></p>
-<ul>
-<li>设置多个就绪队列，第1级队列优先级最高，其余逐个降低</li>
-<li>优先级<strong>越高</strong>，队列的时间片<strong>越小</strong></li>
-<li>每个队列采用<strong>FCFS</strong>算法</li>
-</ul>
-</li>
-</ol>
+          <h2 id="Unix-V6-系统"><a href="#Unix-V6-系统" class="headerlink" title="Unix V6++系统"></a>Unix V6++系统</h2><p><img src="/../typora-user-images/image-20251123120836529.png" alt="image-20251123120836529"></p>
+<p><img src="/../typora-user-images/11778bc9b67fb55b1a95698d658c1c63.jpg" alt="11778bc9b67fb55b1a95698d658c1c63"></p>
+<p><img src="/../typora-user-images/c797856a280cf8e253e9a426ae65c158.jpg" alt="c797856a280cf8e253e9a426ae65c158"></p>
 
         
       
@@ -384,7 +302,7 @@
       <div class="wx-share-link-card">
         
         <div class="wx-share-info">
-          <h3 class="wx-share-title">操作系统-2.2CPU调度</h3>
+          <h3 class="wx-share-title">操作系统-Unix V6++</h3>
           <div class="wx-share-url">
             <input type="text" readonly value="" id="wx-share-url-input">
             <button onclick="copyShareUrl()" class="wx-copy-btn">复制链接</button>
@@ -548,18 +466,18 @@ function copyShareUrl() {
   
 <nav id="article-nav">
   
-    <a href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/11/25/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          操作系统-2.3同步与互斥
+          形式语言-正则语言&amp;正则表达式
         
       </div>
     </a>
   
   
-    <a href="/2025/11/05/%E8%AE%A1%E7%BD%91-1-%E8%AE%A1%E7%BD%91%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计网-1.计网体系结构</div>
+    <a href="/2025/11/14/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">系统结构-向量处理机</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -586,7 +504,7 @@ function copyShareUrl() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">1. 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">2.实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%BF%9B%E7%A8%8B%E5%88%87%E6%8D%A2"><span class="toc-number">3.</span> <span class="toc-text">3.进程切换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2"><span class="toc-number">3.0.1.</span> <span class="toc-text">上下文切换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2-%E6%A8%A1%E5%BC%8F%E5%88%87%E6%8D%A2"><span class="toc-number">3.0.2.</span> <span class="toc-text">上下文切换&amp;模式切换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">4.调度算法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Unix-V6-%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">Unix V6++系统</span></a></li></ol>
                     </div>
                 </span>
             </div>
