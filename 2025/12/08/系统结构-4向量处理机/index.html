@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>系统结构-向量处理机 | BaBaLiBoo</title>
+  <title>系统结构-4向量处理机 | BaBaLiBoo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="系统结构-向量处理机">
-<meta property="og:url" content="http://example.com/2025/11/14/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/index.html">
+  <meta name="description" content="对应“ 标量处理机 ”  处理方式 横向 纵向 纵横——又称分组处理，组内纵向，组间横向  结构   对比项 存储器–存储器型 寄存器–寄存器型    数据来源 主存 → 流水线 主存 → 向量寄存器   运算位置 流水线直接对主存数据 寄存器之间   向量长度 不受限制 受寄存器长度限制   访存次数 极多 极少   对存储器要求 极高 较低   是否需要纵横处理 ❌ 不需要 ✅ 必须   代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统结构-4向量处理机">
+<meta property="og:url" content="http://example.com/2025/12/08/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-4%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/index.html">
 <meta property="og:site_name" content="BaBaLiBoo">
+<meta property="og:description" content="对应“ 标量处理机 ”  处理方式 横向 纵向 纵横——又称分组处理，组内纵向，组间横向  结构   对比项 存储器–存储器型 寄存器–寄存器型    数据来源 主存 → 流水线 主存 → 向量寄存器   运算位置 流水线直接对主存数据 寄存器之间   向量长度 不受限制 受寄存器长度限制   访存次数 极多 极少   对存储器要求 极高 较低   是否需要纵横处理 ❌ 不需要 ✅ 必须   代">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-11-14T03:45:03.000Z">
-<meta property="article:modified_time" content="2025-11-24T17:24:58.508Z">
+<meta property="article:published_time" content="2025-12-08T03:45:03.000Z">
+<meta property="article:modified_time" content="2025-12-16T15:42:26.530Z">
 <meta property="article:author" content="BaBaLiBoo">
 <meta property="article:tag" content="系统结构">
 <meta name="twitter:card" content="summary">
@@ -22,8 +24,8 @@
     
     <!-- Open Graph 标签 - 用于微信分享 -->
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://example.com/2025/11/14/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/">
-    <meta property="og:title" content="系统结构-向量处理机">
+    <meta property="og:url" content="http://example.com/2025/12/08/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-4%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/">
+    <meta property="og:title" content="系统结构-4向量处理机">
     
     <meta property="og:description" content="花有重开日，人无再少年">
     
@@ -62,7 +64,7 @@
 			<img src="/img/avatar.jpg" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">BaBaLiBoo</a></h1>
+		  <h1 class="header-author"><a href="/">Babalibo</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">花有重开日，人无再少年</p>
@@ -129,7 +131,7 @@
 				<img src="/img/avatar.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">BaBaLiBoo</h1>
+			  <h1 class="header-author js-header-author">Babalibo</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>花有重开日，人无再少年<i class="icon icon-quo-right"></i></p>
@@ -190,7 +192,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-系统结构-向量处理机" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-系统结构-4向量处理机" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -205,13 +207,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      系统结构-向量处理机
+      系统结构-4向量处理机
     </h1>
   
 
         
-        <a href="/2025/11/14/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/" class="archive-article-date">
-  	<time datetime="2025-11-14T03:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-14</time>
+        <a href="/2025/12/08/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-4%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/" class="archive-article-date">
+  	<time datetime="2025-12-08T03:45:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-12-08</time>
 </a>
         
       </header>
@@ -219,7 +221,59 @@
     <div class="article-entry" itemprop="articleBody">
       
         
-          
+          <blockquote>
+<p>对应“ 标量处理机 ”</p>
+</blockquote>
+<h2 id="处理方式"><a href="#处理方式" class="headerlink" title="处理方式"></a>处理方式</h2><ul>
+<li>横向</li>
+<li>纵向</li>
+<li>纵横——又称分组处理，组内纵向，组间横向</li>
+</ul>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>存储器–存储器型</th>
+<th>寄存器–寄存器型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数据来源</td>
+<td>主存 → 流水线</td>
+<td>主存 → 向量寄存器</td>
+</tr>
+<tr>
+<td>运算位置</td>
+<td>流水线直接对主存数据</td>
+<td>寄存器之间</td>
+</tr>
+<tr>
+<td>向量长度</td>
+<td>不受限制</td>
+<td>受寄存器长度限制</td>
+</tr>
+<tr>
+<td>访存次数</td>
+<td>极多</td>
+<td>极少</td>
+</tr>
+<tr>
+<td>对存储器要求</td>
+<td>极高</td>
+<td>较低</td>
+</tr>
+<tr>
+<td>是否需要纵横处理</td>
+<td>❌ 不需要</td>
+<td>✅ 必须</td>
+</tr>
+<tr>
+<td>代表机型</td>
+<td>早期向量机</td>
+<td>Cray-1</td>
+</tr>
+</tbody></table>
+
         
       
 
@@ -293,7 +347,7 @@
       <div class="wx-share-link-card">
         
         <div class="wx-share-info">
-          <h3 class="wx-share-title">系统结构-向量处理机</h3>
+          <h3 class="wx-share-title">系统结构-4向量处理机</h3>
           <div class="wx-share-url">
             <input type="text" readonly value="" id="wx-share-url-input">
             <button onclick="copyShareUrl()" class="wx-copy-btn">复制链接</button>
@@ -457,18 +511,18 @@ function copyShareUrl() {
   
 <nav id="article-nav">
   
-    <a href="/2025/11/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-Unixv6++/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2025/12/10/%E9%9A%8F%E7%AC%94-%E5%8E%86%E5%8F%B2%E6%97%A0%E6%83%85%E2%80%94%E2%80%94%E8%AE%B0%E3%80%8A%E7%A9%86%E6%96%AF%E6%9E%97%E7%9A%84%E8%91%AC%E7%A4%BC%E3%80%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          操作系统-Unix V6++
+          随笔-历史无情——记《穆斯林的葬礼》
         
       </div>
     </a>
   
   
-    <a href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">系统结构-3流水线</div>
+    <a href="/2025/11/29/%E9%9A%8F%E7%AC%94-%E6%88%91%E7%9A%84%E7%90%B4%E5%9C%A8%E7%AD%89%E5%BE%85%E4%B8%80%E4%B8%AA%E5%8F%88%E4%B8%80%E4%B8%AA%E2%80%9C%E4%B8%8B%E6%AC%A1%E2%80%9D/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随笔-我的琴在等待一个又一个“下次”</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -495,7 +549,7 @@ function copyShareUrl() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">结构</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -682,11 +736,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">形式语言自动机</a>
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+                <a href="javascript:void(0)" class="js-tag color3">形式语言自动机</a>
               </li>
              
               <li class="article-tag-list-item">
