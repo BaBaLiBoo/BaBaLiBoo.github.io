@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>系统结构-2指令系统 | BaBaLiBoo</title><meta name="author" content="BaBaLiBoo"><meta name="copyright" content="BaBaLiBoo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1. 指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统结构-2指令系统">
+<meta property="og:url" content="https://babaliboo.github.io/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="BaBaLiBoo">
+<meta property="og:description" content="1. 指令系统的分类 以C&#x3D;A+B为例说明不同指令系统的特性  堆栈型  计算只能从栈顶拿数据，计算完也只能放回栈顶。 代码： ​	Push A (内存 →\to→ 堆栈) ​	Push B (内存 →\to→ 堆栈) ​	Add ([计算数]堆栈 →\to→ ALU →\to→ [计算结果]堆栈)  ​	Pop C (堆栈 →\to→ 内存)  累加器型  一个操作数必须来自累加器，另一个操作数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://babaliboo.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2025-10-27T15:27:54.000Z">
+<meta property="article:modified_time" content="2026-02-05T07:04:01.367Z">
+<meta property="article:author" content="BaBaLiBoo">
+<meta property="article:tag" content="专业课笔记">
+<meta property="article:tag" content="系统结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://babaliboo.github.io/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "系统结构-2指令系统",
+  "url": "https://babaliboo.github.io/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/",
+  "image": "https://babaliboo.github.io/img/avatar.jpg",
+  "datePublished": "2025-10-27T15:27:54.000Z",
+  "dateModified": "2026-02-05T07:04:01.367Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "BaBaLiBoo",
+      "url": "https://babaliboo.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/favicon.png"><link rel="canonical" href="https://babaliboo.github.io/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '系统结构-2指令系统',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha512-fHwaWebuwA7NSF5Qg/af4UeDx9XqUpYpOGgubo3yWu+b2IQR4UeQwbb42Ti7gVAjNtVoI/I9TEoYeu9omwcC6g==" crossorigin="anonymous" referrerpolicy="no-referrer" /><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">BaBaLiBoo</span></a><a class="nav-page-title" href="/"><span class="site-name">系统结构-2指令系统</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">系统结构-2指令系统</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-27T15:27:54.000Z" title="发表于 2025-10-27 23:27:54">2025-10-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-05T07:04:01.367Z" title="更新于 2026-02-05 15:04:01">2026-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TongjiCS-%E7%AC%94%E8%AE%B0/">TongjiCS-笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TongjiCS-%E7%AC%94%E8%AE%B0/term5/">term5</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/TongjiCS-%E7%AC%94%E8%AE%B0/term5/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-指令系统的分类"><a href="#1-指令系统的分类" class="headerlink" title="1. 指令系统的分类"></a>1. 指令系统的分类</h2><p><img src="/typora-user-images/image-20251027234033760.png" alt="image-20251027234033760"></p>
+<p>以<code>C=A+B</code>为例说明不同指令系统的特性</p>
+<ul>
+<li><strong>堆栈型</strong></li>
+</ul>
+<p>计算<strong>只能</strong>从栈顶拿数据，计算完也<strong>只能</strong>放回栈顶。</p>
+<p>代码：</p>
+<p>​	<code>Push A</code> (内存 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 堆栈)</p>
+<p>​	<code>Push B</code> (内存 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 堆栈)</p>
+<p>​	<code>Add</code> ([计算数]堆栈 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> [计算结果]堆栈) </p>
+<p>​	<code>Pop C</code> (堆栈 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存)</p>
+<ul>
+<li><strong>累加器型</strong></li>
+</ul>
+<p>一个操作数必须来自<strong>累加器</strong>，另一个操作数必须来自<strong>内存</strong>。结果必须放回<strong>累加器</strong>。</p>
+<p>代码：</p>
+<p>​	<code>Load A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 累加器)</p>
+<p>​	<code>Add B</code> (累加器 + 内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 累加器) </p>
+<p>​	<code>Store C</code> (累加器 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
+<ul>
+<li><p><strong>寄存器型</strong></p>
+<ul>
+<li><strong>寄存器-内存型</strong></li>
+</ul>
+<p>累加器型的“升级版”。计算时，一个操作数来自<strong>任意</strong>寄存器，另一个可以来自内存。</p>
+<p>代码：</p>
+<p>​    <code>Load R1, A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R1</code>) </p>
+<p>​    <code>Add R3, R1, B</code> (<code>R1</code> + 内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>) </p>
+<p>​    <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
+<ul>
+<li><p><strong>寄存器-寄存器型</strong></p>
+<p>⭐RISC核心：<strong>快慢分离</strong>。ALU只做快速计算；内存只负责慢速访问</p>
+</li>
+</ul>
+<p>ALU<strong>不能</strong>直接访问内存。所有操作数必须先从内存 <code>Load</code>到寄存器中</p>
+<p>代码：</p>
+<p>​    <code>Load R1, A</code> (内存 <code>A</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R1</code>) </p>
+<p>​    <code>Load R2, B</code> (内存 <code>B</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R2</code>) </p>
+<p>​    <code>Add R3, R1, R2</code> (寄存器 <code>R1</code> + 寄存器 <code>R2</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> ALU <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 寄存器 <code>R3</code>)     <code>Store R3, C</code> (寄存器 <code>R3</code> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span> 内存 <code>C</code>)</p>
+</li>
+</ul>
+<h2 id="2-寻址方式"><a href="#2-寻址方式" class="headerlink" title="2.寻址方式"></a>2.寻址方式</h2><p><img src="/typora-user-images/image-20251110144458277.png" alt="image-20251110144458277"></p>
+<h2 id="3-控制指令"><a href="#3-控制指令" class="headerlink" title="3. 控制指令"></a>3. 控制指令</h2><p>①跳转指令：无条件改变控制流</p>
+<p>②分支指令：有条件改变控制流</p>
+<p>改变控制流大多是<strong>分支指令</strong>（条件跳转）</p>
+<p>分三种</p>
+<ul>
+<li>条件码</li>
+<li>条件寄存器（主流）</li>
+<li>比较与分支</li>
+</ul>
+<h2 id="4-指令操作码的优化"><a href="#4-指令操作码的优化" class="headerlink" title="4. 指令操作码的优化"></a>4. 指令操作码的优化</h2><p>指令 &#x3D;操作码+地址码</p>
+<p>优化：如何用最短的位数来表示指令信息</p>
+<ul>
+<li><p><strong>最短平均码长（信息熵）</strong>：<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>H</mi><mo>=</mo><mo>−</mo><mo>∑</mo><msub><mi>p</mi><mi>i</mi></msub><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">H = -\sum p_i \log_2 p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mord">−</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>理论可达的平均最短码长</p>
+</li>
+<li><p><strong>平均码长</strong>：</p>
+</li>
+</ul>
+<p>​	<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mo>=</mo><mo>∑</mo><msub><mi>p</mi><mi>i</mi></msub><msub><mi>l</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">L=\sum p_i l_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.6em;vertical-align:-0.55em;"></span><span class="mop op-symbol large-op" style="position:relative;top:0em;">∑</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0197em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li><p><strong>信息冗余量</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>L</mi><mo>−</mo><mi>H</mi></mrow><mi>L</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{L-H}{L}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></li>
+</ul>
+<h4 id="①霍夫曼编码"><a href="#①霍夫曼编码" class="headerlink" title="①霍夫曼编码"></a>①霍夫曼编码</h4><p>除该码外还有一种利用霍夫曼概念的拓展操作码</p>
+<p><img src="/typora-user-images/image-20251112161347098.png" alt="image-20251112161347098"></p>
+<p>方法：先读取前两位，若是00&#x2F;01&#x2F;10则确定是2位操作码，若是11则继续读两位，重复…</p>
+<h4 id="②等长扩展码"><a href="#②等长扩展码" class="headerlink" title="②等长扩展码"></a>②等长扩展码</h4><h4 id="③定长扩展码"><a href="#③定长扩展码" class="headerlink" title="③定长扩展码"></a>③定长扩展码</h4><h2 id="5-指令字格式的优化"><a href="#5-指令字格式的优化" class="headerlink" title="5. 指令字格式的优化"></a>5. 指令字格式的优化</h2></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://babaliboo.github.io">BaBaLiBoo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://babaliboo.github.io/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/">https://babaliboo.github.io/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-2%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://babaliboo.github.io" target="_blank">BaBaLiBoo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%AC%94%E8%AE%B0/">专业课笔记</a><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></div><div class="post-share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/10/29/java-5-%E9%9B%86%E5%90%88/" title="java-5.集合"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">java-5.集合</div></div><div class="info-2"><div class="info-item-1">什么是集合——若干确定元素构成的整体。 特点： 接口与实现分离：即接口只定义行为，不关心怎么做。例如有序表的接口是 List，具体的实现类有 ArrayList，LinkedList等 支持泛型（java-4.泛型） 通过统一方式——迭代器 (Iterator) 访问  12345Iterator&lt;String&gt; it = list.iterator(); // 获取遥控器while (it.hasNext()) &#123;               // 问：还有吗？    String s = it.next();            // 答：给我下一个    System.out.println(s);&#125;  集合的分类有哪些 list：有序列表 set：无重复元素 map：键值对  List常用函数 1234567list.add(i) //末尾添加元素list.add(int index, i) //在指定索引添加元素list.remove(i) //删除元素list.remove(int index) //删除指定索引的元素list.con...</div></div></div></a><a class="pagination-related" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="系统结构-1.基本概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">系统结构-1.基本概念</div></div><div class="info-2"><div class="info-item-1">定量准则Amdahl定律 系统加速比 SnS_nSn​：  Sn=T0Tn=1(1−Fe)+FeSe S_n=\frac{T_0}{T_n}=\frac{1}{(1-F_e)+\frac{F_e}{S_e}} Sn​=Tn​T0​​=(1−Fe​)+Se​Fe​​1​  改进前整个任务执行时间&#x2F;改进后整个任务执行时间 FeF_eFe​：可改进比例  SeS_eSe​：部件加速比  例题：假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的10倍和改进FP指令速度为原来的2倍，哪种方案更好？ ①  Sn=1(1−0.2)+0.210=1.22 S_n=\frac{1}{(1-0.2)+\frac{0.2}{10}}=1.22 Sn​=(1−0.2)+100.2​1​=1.22 ② Sn=1(1−0.5)+0.52=1.33 S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33 Sn​=(1−0.5)+20.5​1​=1.33 ∴ 方案2 优于方案1 CPU性能公式CPU时间&#x3D; IC × C...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/11/12/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-3%E6%B5%81%E6%B0%B4%E7%BA%BF/" title="系统结构-3流水线"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-12</div><div class="info-item-2">系统结构-3流水线</div></div><div class="info-2"><div class="info-item-1">性能指标①吞吐率：单位时间内完成的任务数TP=nTkTP=\frac{n}{T_k}TP=Tk​n​   每段时间相等（n个任务，每个k段） T总=kΔt+(n−1)ΔtT_总=k \Delta t+(n-1)\Delta tT总​=kΔt+(n−1)Δt    每段时间不完全相等（n个任务，每个k段） T总=∑i=1kΔti+(n−1)(Δt1,Δt2,...,Δtn)T_总=\sum_{i=1}^{k}\Delta t_i+(n-1)(\Delta t_1,\Delta t_2,...,\Delta t_n)T总​=∑i=1k​Δti​+(n−1)(Δt1​,Δt2​,...,Δtn​)   ②加速比S=TsTk=nkk+(n−1)S=\frac{T_s}{T_k}=\frac{nk}{k+(n-1)}S=Tk​Ts​​=k+(n−1)nk​ （>1）  加速前&#x2F;加速后 ③效率：流水线设备利用率实际使用时间&#x2F;整个运行时间（占用方格&#x2F;整块面积） E=实际使用时间整个运行时间=nkΔtk[kΔt+(n−1)Δt]=nk+n−1E=\frac{实际使用...</div></div></div></a><a class="pagination-related" href="/2025/12/08/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-4%E5%90%91%E9%87%8F%E5%A4%84%E7%90%86%E6%9C%BA/" title="系统结构-4向量处理机"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-08</div><div class="info-item-2">系统结构-4向量处理机</div></div><div class="info-2"><div class="info-item-1"> 对应“ 标量处理机 ”  处理方式 横向 纵向 纵横——又称分组处理，组内纵向，组间横向  结构   对比项 存储器–存储器型 寄存器–寄存器型    数据来源 主存 → 流水线 主存 → 向量寄存器   运算位置 流水线直接对主存数据 寄存器之间   向量长度 不受限制 受寄存器长度限制   访存次数 极多 极少   对存储器要求 极高 较低   是否需要纵横处理 ❌ 不需要 ✅ 必须   代表机型 早期向量机 Cray-1   </div></div></div></a><a class="pagination-related" href="/2025/10/27/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="系统结构-1.基本概念"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-27</div><div class="info-item-2">系统结构-1.基本概念</div></div><div class="info-2"><div class="info-item-1">定量准则Amdahl定律 系统加速比 SnS_nSn​：  Sn=T0Tn=1(1−Fe)+FeSe S_n=\frac{T_0}{T_n}=\frac{1}{(1-F_e)+\frac{F_e}{S_e}} Sn​=Tn​T0​​=(1−Fe​)+Se​Fe​​1​  改进前整个任务执行时间&#x2F;改进后整个任务执行时间 FeF_eFe​：可改进比例  SeS_eSe​：部件加速比  例题：假设某测试程序中FP指令执行时间占50%，FPSQR指令占20%，用改进FPSQR指令速度为原来的10倍和改进FP指令速度为原来的2倍，哪种方案更好？ ①  Sn=1(1−0.2)+0.210=1.22 S_n=\frac{1}{(1-0.2)+\frac{0.2}{10}}=1.22 Sn​=(1−0.2)+100.2​1​=1.22 ② Sn=1(1−0.5)+0.52=1.33 S_n=\frac{1}{(1-0.5)+\frac{0.5}{2}}=1.33 Sn​=(1−0.5)+20.5​1​=1.33 ∴ 方案2 优于方案1 CPU性能公式CPU时间&#x3D; IC × C...</div></div></div></a><a class="pagination-related" href="/2025/11/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-2.3%E5%90%8C%E6%AD%A5%E4%B8%8E%E4%BA%92%E6%96%A5/" title="操作系统-2.3同步与互斥"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-08</div><div class="info-item-2">操作系统-2.3同步与互斥</div></div><div class="info-2"><div class="info-item-1">1. 概念 临界资源：一次仅允许一个进程使用的资源 访问过程：进入区（检查）-临界区（访问）-退出区-剩余区   同步：直接制约关系，源于进程间相互合作 互斥：间接制约关系  2.互斥实现方法①软件实现 一、单标志法   两个进程轮流进入临界区 不足：若一个无法不不再进入，另一个也将无法进入（违背“空闲让进”原则）  二、双标志先检查法   不足：可能同时进入临界区。即检查对方标志后和设置自己标志之前可能发生进程切换（违背“忙则等待”原则）  三、双标志后检查法   不足：两个都想进时谁都进不了（违背“空闲让进”、“有限等待”原则）  四、Peterson算法（四种算法中最好）   ②硬件实现 中断屏蔽方法（最简单，效率降低，不适用多处理系统） 硬件指令方法——TestAndSet指令（原子操作，适用多处理系统，但违背“让权等待”） 硬件指令方法——Swap指令  3.信号量一个变量。表示系统中某种资源的数量。  ①整型信号量  操作：初始化、wait（P操作：“申请”）、signal（V操作：“释放”） 缺陷：不满足“让权等待”  ⭐②记录型信号量 在整型基础上加一个进程链表L...</div></div></div></a><a class="pagination-related" href="/2026/01/07/%E8%AE%A1%E7%BD%91-3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" title="计网-3-数据链路层"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-07</div><div class="info-item-2">计网-3-数据链路层</div></div><div class="info-2"><div class="info-item-1">第三章 数据链路层一、组帧（封装成帧）主要问题 帧定界 ——接收方确定帧的界限  透明传输——接收方去除“帧定界”的附加信息   方法 ①字符计数法 帧长&#x3D;计数字段长度+帧的数据部分长度 缺点：一个字段出错后续所有无法定界  ②字节填充法  特殊字符前插入转义字符  ③零比特填充法   ④违规编码法 曼彻斯特编码中间不跳变——违规 在首尾各加入一个违规信号    二、差错控制目标：发现帧内部位错  检测编码——接受方发现错后丢弃帧，通知发送方重传帧 纠错编码—接收方发现并纠正比特错误  检错编码 ①奇偶校验奇校验-整个校验码含奇数个1 偶校验-整个校验码含偶数个1 偶校验更常用，可使用异或运算  求偶校验位  偶校验但若跳变两处时无法检测出错误    ②循环冗余检验码CRC 信息码长度&#x3D;6，校验码位数&#x3D;3 除数&#x3D;信息码补3个0&#x3D;101001000 被除数&#x3D;1101 使用模2除法   检测&amp;纠错 将接收数据用1101进行模2除 余数为000则没有出错    ③海明码       三、流量控制&amp;可靠传输滑动窗...</div></div></div></a><a class="pagination-related" href="/2025/11/09/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-3.2%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="操作系统-3.2虚拟内存管理"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-11-09</div><div class="info-item-2">操作系统-3.2虚拟内存管理</div></div><div class="info-2"><div class="info-item-1">1. 基础虚拟存储器特性  多次性：作业运行时允许分多次调入内存 对换性：作业运行时不用常驻内存，不用的可以调至外存 虚拟性：逻辑上扩充内存，用户看到的内存容量&gt;&gt;实际容量  虚拟技术实现方式  请求分页 请求分段 请求段页式  2.请求分页页表机制 新增P（是否调入内存）、A（访问次数）、M（是否被修改）、外存地址 缺页中断机构进程执行任务 →缺页 →产生中断 →操作系统检查内存有无空位  有→放入  没有→采用置换算法踢出一个旧页面   地址变换机构**查快表 **  命中 → 形成物理地址，结束 未命中 → ** 查页表** 页在内存 → 更新快表，形成物理地址，结束 页不在内存 →缺页中断    3.⭐页面置换算法①最佳置换算法(OPT)淘汰：今后最长时间内不再使用的页面   性能最好，但无法实现  ②先进先出置换算法(FIFO)淘汰：最早进入内存的页面 ③最近最久未使用置换算法(LRU)淘汰：最近最久未使用的页面  性能最接近OPT，但开销太大  ④时钟置换算法(CLOCK) 每个页面设一个访问位，初始为0，被访问时置为1。 淘汰扫描到的第一个为0的页面。 ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">BaBaLiBoo</div><div class="author-info-description"><br>
+🎓 同济大学 本科
+<br>💻 计算机科学与技术
+<br>💕 钢琴丨羽毛球丨干饭
+<br> 我的学习资源库：<br>
+<a href="https://github.com/BaBaLiBoo/TongjiCS-Resources" target="_blank">TongjiCS-Resources</a>
+<br><br>
+平静地接受自己是个笨蛋
+<br>
+</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">42</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/BaBaLiBoo"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/BaBaLiBoo" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2354096@tongji.edu.cn" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">我要发大财，
+<br>我要坐马车，
+<br>我要游山玩水，
+<br>我要学以致用！
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">1.</span> <span class="toc-text">1. 指令系统的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2.寻址方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8E%A7%E5%88%B6%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">3. 控制指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8C%87%E4%BB%A4%E6%93%8D%E4%BD%9C%E7%A0%81%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">4. 指令操作码的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E9%9C%8D%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81"><span class="toc-number">4.0.1.</span> <span class="toc-text">①霍夫曼编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A1%E7%AD%89%E9%95%BF%E6%89%A9%E5%B1%95%E7%A0%81"><span class="toc-number">4.0.2.</span> <span class="toc-text">②等长扩展码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E5%AE%9A%E9%95%BF%E6%89%A9%E5%B1%95%E7%A0%81"><span class="toc-number">4.0.3.</span> <span class="toc-text">③定长扩展码</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%8C%87%E4%BB%A4%E5%AD%97%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">5. 指令字格式的优化</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/02/%E9%9B%85%E6%80%9D-%E5%8F%A3%E8%AF%AD/" title="雅思-口语">雅思-口语</a><time datetime="2026-02-02T06:29:34.000Z" title="发表于 2026-02-02 14:29:34">2026-02-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/26/%E9%9B%85%E6%80%9D-%E5%86%99%E4%BD%9C/" title="雅思-写作">雅思-写作</a><time datetime="2026-01-26T08:26:17.000Z" title="发表于 2026-01-26 16:26:17">2026-01-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/23/%E9%9B%85%E6%80%9D-%E5%A4%87%E8%80%83%E8%AE%A1%E5%88%92/" title="雅思-备考">雅思-备考</a><time datetime="2026-01-23T05:36:11.000Z" title="发表于 2026-01-23 13:36:11">2026-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/01/14/%E9%9A%8F%E7%AC%94-%E7%A5%9D%E4%BD%A0%E6%9C%89%E4%B8%80%E4%B8%AA%E8%87%AA%E4%BD%9C%E8%87%AA%E5%8F%97%E7%9A%84%E4%BA%BA%E7%94%9F/" title="随笔-祝你有一个自作自受的人生"><img src="/img/cover4.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="随笔-祝你有一个自作自受的人生"/></a><div class="content"><a class="title" href="/2026/01/14/%E9%9A%8F%E7%AC%94-%E7%A5%9D%E4%BD%A0%E6%9C%89%E4%B8%80%E4%B8%AA%E8%87%AA%E4%BD%9C%E8%87%AA%E5%8F%97%E7%9A%84%E4%BA%BA%E7%94%9F/" title="随笔-祝你有一个自作自受的人生">随笔-祝你有一个自作自受的人生</a><time datetime="2026-01-13T19:24:28.000Z" title="发表于 2026-01-14 03:24:28">2026-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/13/%E4%BF%AE%E5%A4%8Dhexo-butterfly%E4%B8%8D%E8%92%9C%E5%AD%90%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96%E8%AE%A1%E6%95%B0/" title="修复hexo-butterfly不蒜子无法显示计数问题与初始化计数">修复hexo-butterfly不蒜子无法显示计数问题与初始化计数</a><time datetime="2026-01-13T07:19:05.000Z" title="发表于 2026-01-13 15:19:05">2026-01-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By BaBaLiBoo</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.0.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><div class="js-pjax"></div><script src="/js/typora-zoom-fix.js"></script><script>(function() {
+  var pvcountOffset = 200;
+  var uvcountOffset = 100;
+  var pvProcessed = false;
+  var uvProcessed = false;
+
+  function fixCount() {
+    if (!pvProcessed) {
+      var pvElement = document.getElementById('busuanzi_value_site_pv');
+      if (pvElement) {
+        var spinner = pvElement.querySelector('i.fa-spinner');
+        var textContent = pvElement.textContent.trim();
+        if (!spinner && textContent && /\d+/.test(textContent)) {
+          var currentPv = parseInt(textContent.replace(/[^\d]/g, '')) || 0;
+          pvElement.textContent = (currentPv + pvcountOffset).toLocaleString();
+          pvProcessed = true;
+        }
+      }
+    }
+
+    if (!uvProcessed) {
+      var uvElement = document.getElementById('busuanzi_value_site_uv');
+      if (uvElement) {
+        var spinner = uvElement.querySelector('i.fa-spinner');
+        var textContent = uvElement.textContent.trim();
+        if (!spinner && textContent && /\d+/.test(textContent)) {
+          var currentUv = parseInt(textContent.replace(/[^\d]/g, '')) || 0;
+          uvElement.textContent = (currentUv + uvcountOffset).toLocaleString();
+          uvProcessed = true;
+        }
+      }
+    }
+
+    return pvProcessed && uvProcessed;
+  }
+
+  var int = setInterval(function() {
+    if (fixCount()) clearInterval(int);
+  }, 50);
+
+  setTimeout(function() { clearInterval(int); }, 10000);
+})();</script>
+<script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://babaliboo.github.io/sitemap.xml
